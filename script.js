@@ -1,117 +1,318 @@
-// --- CONFIGURAÇÃO DO WHATSAPP COM NÚMERO REAL ---
-const NUMERO_WHATSAPP = "5581995758108";
+/* RESET & VARIÁVEIS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
 
-document.addEventListener('DOMContentLoaded', () => {
+:root {
+    --primary-color: #00c6ff;
+    --secondary-color: #0072ff;
+    --dark-bg: #0f172a;
+    --card-bg: #1e293b;
+    --text-color: #f8fafc;
+    --accent-green: #25d366;
+}
 
-    // 1. Atualiza links fixos do WhatsApp
-    const whatsappFloat = document.getElementById('whatsapp-float');
-    const whatsappLink = document.getElementById('whatsapp-link');
-    
-    if (whatsappFloat) whatsappFloat.href = `https://wa.me/${NUMERO_WHATSAPP}`;
-    if (whatsappLink) whatsappLink.href = `https://wa.me/${NUMERO_WHATSAPP}`;
+body {
+    background-color: var(--dark-bg);
+    color: var(--text-color);
+    line-height: 1.6;
+}
 
-    // 2. Menu Mobile
-    const hamburger = document.getElementById('hamburger');
-    const navMenu = document.getElementById('nav-menu');
-    const navLinks = document.querySelectorAll('.nav-link');
+/* NAVBAR & LOGO */
+header {
+    background-color: rgba(15, 23, 42, 0.95);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
 
-    if (hamburger && navMenu) {
-        hamburger.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
-        });
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.8rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
 
-        navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                navMenu.classList.remove('active');
-            });
-        });
-    }
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: #fff;
+}
 
-    // 3. ENVIAR PROPOSTA VIA WHATSAPP (CORRIGIDO)
-    const btnSendProposal = document.getElementById('btn-send-proposal');
+.logo-img {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 0 10px rgba(0, 198, 255, 0.5);
+}
 
-    if (btnSendProposal) {
-        btnSendProposal.addEventListener('click', (event) => {
-            event.preventDefault(); // Impede recarregamento acidental da página
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 1.5rem;
+}
 
-            // Seleciona as opções marcadas no formulário
-            const checkboxes = document.querySelectorAll('#proposal-form input[type="checkbox"]:checked');
-            const detalhesInput = document.getElementById('proposal-detalhes');
-            const detalhes = detalhesInput ? detalhesInput.value.trim() : '';
+.nav-link {
+    color: var(--text-color);
+    text-decoration: none;
+    transition: color 0.3s;
+}
 
-            if (checkboxes.length === 0) {
-                alert('Por favor, selecione pelo menos um serviço antes de solicitar a proposta.');
-                return;
-            }
+.nav-link:hover {
+    color: var(--primary-color);
+}
 
-            const selectedServices = [];
-            checkboxes.forEach(cb => selectedServices.push(cb.value));
+/* HERO */
+.hero {
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0 1rem;
+    margin-top: 60px;
+    background: linear-gradient(135deg, rgba(15,23,42,0.9), rgba(0,114,255,0.2));
+}
 
-            let msg = `Olá, Alexsandro! Gostaria de solicitar um orçamento pelo site.\n\n`;
-            msg += `*Serviços Selecionados:*\n`;
-            selectedServices.forEach(s => msg += `- ${s}\n`);
+.hero-content h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
 
-            if (detalhes) {
-                msg += `\n*Detalhes do Projeto:*\n${detalhes}\n`;
-            }
+.hero-content p {
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin: 0 auto 2rem auto;
+    color: #cbd5e1;
+}
 
-            msg += `\nPodemos conversar sobre valores e prazos?`;
+/* SEÇÕES & CARDS */
+.section {
+    padding: 4rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
 
-            const url = `https://wa.me/${NUMERO_WHATSAPP}?text=${encodeURIComponent(msg)}`;
-            window.open(url, '_blank');
-        });
-    }
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
 
-    // 4. CHATBOT ATENDIMENTO ONLINE
-    const aiChatToggle = document.getElementById('ai-chat-toggle');
-    const aiChatBox = document.getElementById('ai-chat-box');
-    const chatCloseBtn = document.getElementById('chat-close-btn');
-    const chatMessages = document.getElementById('chat-messages');
-    const chatUserInput = document.getElementById('chat-user-input');
-    const chatSendBtn = document.getElementById('chat-send-btn');
+.card {
+    background-color: var(--card-bg);
+    padding: 2rem;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: transform 0.3s;
+}
 
-    if (aiChatToggle && aiChatBox && chatCloseBtn) {
-        aiChatToggle.addEventListener('click', () => aiChatBox.classList.toggle('active'));
-        chatCloseBtn.addEventListener('click', () => aiChatBox.classList.remove('active'));
-    }
+.card:hover {
+    transform: translateY(-5px);
+}
 
-    function processarIA(pergunta) {
-        const p = pergunta.toLowerCase();
-        if (p.includes('plano') || p.includes('landing') || p.includes('site')) {
-            return "Temos 3 níveis de Landing Pages: <strong>Essencial</strong>, <strong>Profissional</strong> e <strong>Personalizada</strong>!";
-        } else if (p.includes('sst') || p.includes('pgr') || p.includes('ltcat') || p.includes('segurança')) {
-            return "Elaboramos documentações completas de <strong>SST (PGR, LTCAT, PCMSO)</strong> e dashboards no Power BI / AppSheet.";
-        } else {
-            return `Pode falar diretamente com o Alexsandro no WhatsApp! <br><br><a href="https://wa.me/${NUMERO_WHATSAPP}" target="_blank" class="btn btn-primary" style="padding: 6px 12px; font-size: 0.8rem; margin-top:5px;"><i class="fa-brands fa-whatsapp"></i> Abrir WhatsApp</a>`;
-        }
-    }
+.card-icon {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
 
-    function enviarChat() {
-        if (!chatUserInput) return;
-        const txt = chatUserInput.value.trim();
-        if (!txt) return;
+/* BOTÕES & FORMULÁRIO */
+.btn {
+    display: inline-block;
+    padding: 10px 24px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    transition: opacity 0.3s;
+}
 
-        const uDiv = document.createElement('div');
-        uDiv.className = 'chat-msg msg-user';
-        uDiv.textContent = txt;
-        chatMessages.appendChild(uDiv);
+.btn-primary {
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    color: #fff;
+}
 
-        chatUserInput.value = '';
-        chatMessages.scrollTop = chatMessages.scrollHeight;
+.btn-whatsapp-calc {
+    background-color: var(--accent-green);
+    color: #fff;
+    font-size: 1.1rem;
+    width: 100%;
+    margin-top: 1rem;
+}
 
-        setTimeout(() => {
-            const aiDiv = document.createElement('div');
-            aiDiv.className = 'chat-msg msg-ai';
-            aiDiv.innerHTML = processarIA(txt);
-            chatMessages.appendChild(aiDiv);
-            chatMessages.scrollTop = chatMessages.scrollHeight;
-        }, 500);
-    }
+.proposal-container {
+    max-width: 600px;
+    margin: 2rem auto 0 auto;
+    background-color: var(--card-bg);
+    padding: 2rem;
+    border-radius: 12px;
+    text-align: left;
+}
 
-    if (chatSendBtn && chatUserInput) {
-        chatSendBtn.addEventListener('click', enviarChat);
-        chatUserInput.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') enviarChat();
-        });
-    }
-});
+.options-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.checkbox-card {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 12px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background-color: var(--dark-bg);
+    color: #fff;
+    resize: vertical;
+}
+
+/* WHATSAPP FLOAT & CHATBOT */
+.whatsapp-float {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: var(--accent-green);
+    color: #fff;
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    z-index: 999;
+}
+
+.ai-chat-toggle {
+    position: fixed;
+    bottom: 85px;
+    right: 20px;
+    background-color: var(--secondary-color);
+    color: #fff;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    cursor: pointer;
+    z-index: 999;
+}
+
+.ai-chat-box {
+    display: none;
+    position: fixed;
+    bottom: 145px;
+    right: 20px;
+    width: 320px;
+    height: 400px;
+    background-color: var(--card-bg);
+    border-radius: 12px;
+    flex-direction: column;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+    z-index: 1000;
+    overflow: hidden;
+}
+
+.ai-chat-box.active {
+    display: flex;
+}
+
+.chat-header {
+    background-color: var(--dark-bg);
+    padding: 12px;
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+}
+
+.chat-header button {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+.chat-messages {
+    flex: 1;
+    padding: 12px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.chat-msg {
+    padding: 8px 12px;
+    border-radius: 8px;
+    max-width: 80%;
+    font-size: 0.9rem;
+}
+
+.msg-ai {
+    background-color: rgba(255, 255, 255, 0.1);
+    align-self: flex-start;
+}
+
+.msg-user {
+    background-color: var(--secondary-color);
+    align-self: flex-end;
+}
+
+.chat-input-area {
+    display: flex;
+    padding: 10px;
+    background-color: var(--dark-bg);
+}
+
+.chat-input-area input {
+    flex: 1;
+    padding: 8px;
+    border: none;
+    border-radius: 4px;
+}
+
+.chat-input-area button {
+    background-color: var(--primary-color);
+    border: none;
+    color: #fff;
+    padding: 0 12px;
+    margin-left: 5px;
+    border-radius: 4px;
+    cursor: pointer;
+}
