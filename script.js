@@ -1,344 +1,117 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alexsandro Damasceno | ADS & SST Especialista</title>
-    <link rel="stylesheet" href="style.css">
-    <!-- Google Fonts & Font Awesome Icons -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-</head>
-<body>
+// --- CONFIGURAÇÃO DO WHATSAPP COM NÚMERO REAL ---
+const NUMERO_WHATSAPP = "5581995758108";
 
-    <!-- Header / Navbar -->
-    <header class="navbar" id="top-navbar">
-        <div class="container nav-container">
-            <a href="#home" class="logo-brand">
-                <span class="logo-icon">&lt;/&gt;</span>
-                <span class="logo-text">Alexsandro <span class="highlight">Damasceno</span></span>
-            </a>
-            <nav class="nav-menu" id="nav-menu">
-                <a href="#home" class="nav-link active"><i class="fa-solid fa-house"></i> Início</a>
-                <a href="#planos" class="nav-link"><i class="fa-solid fa-layer-group"></i> Planos de Landing</a>
-                <a href="#sst" class="nav-link"><i class="fa-solid fa-shield-halved"></i> Gestão de SST</a>
-                <a href="#proposta" class="nav-link"><i class="fa-solid fa-file-signature"></i> Solicitar Proposta</a>
-                <a href="#contato" class="nav-link btn-nav"><i class="fa-solid fa-paper-plane"></i> Contato</a>
-            </nav>
-            <div class="hamburger" id="hamburger">
-                <i class="fa-solid fa-bars"></i>
-            </div>
-        </div>
-    </header>
+document.addEventListener('DOMContentLoaded', () => {
 
-    <!-- 1. INÍCIO / HERO SECTION -->
-    <section id="home" class="hero">
-        <div class="container hero-container">
-            <div class="hero-content">
-                <span class="badge"><i class="fa-solid fa-certificate"></i> Soluções em ADS e SST</span>
-                <h1>Engenharia de Software e <br><span class="highlight">Segurança do Trabalho</span></h1>
-                <p class="hero-subtitle">
-                    Transformo ideias em Landing Pages de alta conversão, dashboards analíticos e sistemas de gestão em SST (PGR, LTCAT, PCMSO) para impulsionar e proteger a sua empresa.
-                </p>
+    // 1. Atualiza links fixos do WhatsApp
+    const whatsappFloat = document.getElementById('whatsapp-float');
+    const whatsappLink = document.getElementById('whatsapp-link');
+    
+    if (whatsappFloat) whatsappFloat.href = `https://wa.me/${NUMERO_WHATSAPP}`;
+    if (whatsappLink) whatsappLink.href = `https://wa.me/${NUMERO_WHATSAPP}`;
 
-                <div class="hero-stats">
-                    <div class="stat-item">
-                        <strong>100%</strong>
-                        <span>Responsivo</span>
-                    </div>
-                    <div class="stat-item">
-                        <strong>Alta</strong>
-                        <span>Conversão</span>
-                    </div>
-                    <div class="stat-item">
-                        <strong>Rigor</strong>
-                        <span>Técnico SST</span>
-                    </div>
-                </div>
+    // 2. Menu Mobile
+    const hamburger = document.getElementById('hamburger');
+    const navMenu = document.getElementById('nav-menu');
+    const navLinks = document.querySelectorAll('.nav-link');
 
-                <div class="hero-buttons">
-                    <a href="#planos" class="btn btn-primary"><i class="fa-solid fa-rocket"></i> Ver Planos de Sites</a>
-                    <a href="#proposta" class="btn btn-secondary"><i class="fa-solid fa-calculator"></i> Monte Sua Proposta</a>
-                </div>
-            </div>
+    if (hamburger && navMenu) {
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
 
-            <div class="hero-card">
-                <div class="card-glass">
-                    <div class="card-header">
-                        <div class="avatar-wrapper">
-                            <img src="status.png" alt="Alexsandro Damasceno" class="hero-avatar-img">
-                            <span class="status-dot"></span>
-                        </div>
-                        <div>
-                            <h3>Alexsandro Damasceno</h3>
-                            <p>Análise de Sistemas & SST</p>
-                        </div>
-                    </div>
-                    <ul class="skills-list">
-                        <li><i class="fa-solid fa-check"></i> Desenvolvimento de Landing Pages Modernas</li>
-                        <li><i class="fa-solid fa-check"></i> Criação de Dashboards (Power BI / Excel)</li>
-                        <li><i class="fa-solid fa-check"></i> Sistemas Customizados (AppSheet)</li>
-                        <li><i class="fa-solid fa-check"></i> Laudos e Gestão de SST (NR-01, NR-12)</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+            });
+        });
+    }
 
-    <!-- 2. PLANOS DE LANDING PAGE -->
-    <section id="planos" class="section bg-alt">
-        <div class="container">
-            <h2 class="section-title">Planos de Landing Page</h2>
-            <p class="section-subtitle">Páginas modernas desenvolvidas sob medida para atrair e converter clientes</p>
+    // 3. ENVIAR PROPOSTA VIA WHATSAPP (CORRIGIDO)
+    const btnSendProposal = document.getElementById('btn-send-proposal');
 
-            <div class="plans-grid">
-                <!-- Plano Essencial -->
-                <div class="plan-card">
-                    <div class="plan-header">
-                        <span class="plan-badge">Start</span>
-                        <h3>Essencial</h3>
-                        <p>Para profissionais e pequenas empresas que precisam de presença digital rápida.</p>
-                    </div>
-                    <ul class="plan-features">
-                        <li><i class="fa-solid fa-circle-check"></i> Landing Page de Seção Única</li>
-                        <li><i class="fa-solid fa-circle-check"></i> Design 100% Responsivo (Mobile/PC)</li>
-                        <li><i class="fa-solid fa-circle-check"></i> Botão Flutuante do WhatsApp</li>
-                        <li><i class="fa-solid fa-circle-check"></i> Otimização e Carregamento Rápido</li>
-                    </ul>
-                    <a href="#proposta" class="btn btn-secondary btn-block">Solicitar este Plano</a>
-                </div>
+    if (btnSendProposal) {
+        btnSendProposal.addEventListener('click', (event) => {
+            event.preventDefault(); // Impede recarregamento acidental da página
 
-                <!-- Plano Intermediário (Destaque) -->
-                <div class="plan-card plan-featured">
-                    <div class="plan-header">
-                        <span class="plan-badge featured-badge">Mais Vendido</span>
-                        <h3>Profissional</h3>
-                        <p>Estrutura completa com foco total em conversão de leads e autoridade de marca.</p>
-                    </div>
-                    <ul class="plan-features">
-                        <li><i class="fa-solid fa-circle-check"></i> <strong>Tudo do Plano Essencial +</strong></li>
-                        <li><i class="fa-solid fa-circle-check"></i> Formulário de Orçamento / Leads</li>
-                        <li><i class="fa-solid fa-circle-check"></i> Galeria de Portfólio / Serviços</li>
-                        <li><i class="fa-solid fa-circle-check"></i> Chatbot IA de Atendimento Integrado</li>
-                        <li><i class="fa-solid fa-circle-check"></i> Otimização para Google (SEO)</li>
-                    </ul>
-                    <a href="#proposta" class="btn btn-primary btn-block">Solicitar este Plano</a>
-                </div>
+            // Seleciona as opções marcadas no formulário
+            const checkboxes = document.querySelectorAll('#proposal-form input[type="checkbox"]:checked');
+            const detalhesInput = document.getElementById('proposal-detalhes');
+            const detalhes = detalhesInput ? detalhesInput.value.trim() : '';
 
-                <!-- Plano Avançado -->
-                <div class="plan-card">
-                    <div class="plan-header">
-                        <span class="plan-badge">Enterprise</span>
-                        <h3>Personalizado</h3>
-                        <p>Solução sob medida integrando dashboards de dados e sistemas operacionais.</p>
-                    </div>
-                    <ul class="plan-features">
-                        <li><i class="fa-solid fa-circle-check"></i> <strong>Tudo do Plano Profissional +</strong></li>
-                        <li><i class="fa-solid fa-circle-check"></i> Integração com Power BI / Dashboards</li>
-                        <li><i class="fa-solid fa-circle-check"></i> Formulários Dinâmicos / Calculadoras</li>
-                        <li><i class="fa-solid fa-circle-check"></i> Automações e Conexão via API</li>
-                    </ul>
-                    <a href="#proposta" class="btn btn-secondary btn-block">Solicitar este Plano</a>
-                </div>
-            </div>
-        </div>
-    </section>
+            if (checkboxes.length === 0) {
+                alert('Por favor, selecione pelo menos um serviço antes de solicitar a proposta.');
+                return;
+            }
 
-    <!-- 3. GESTÃO DE SST -->
-    <section id="sst" class="section">
-        <div class="container">
-            <h2 class="section-title">Gestão de Segurança e Saúde no Trabalho (SST)</h2>
-            <p class="section-subtitle">Conformidade legal, prevenção de riscos e soluções técnicas para a sua empresa</p>
+            const selectedServices = [];
+            checkboxes.forEach(cb => selectedServices.push(cb.value));
 
-            <div class="sst-grid">
-                <div class="sst-card">
-                    <div class="sst-icon"><i class="fa-solid fa-file-contract"></i></div>
-                    <h3>PGR & PCMSO</h3>
-                    <p>Elaboração e acompanhamento do Programa de Gerenciamento de Riscos e PCMSO em conformidade com as NRs.</p>
-                </div>
+            let msg = `Olá, Alexsandro! Gostaria de solicitar um orçamento pelo site.\n\n`;
+            msg += `*Serviços Selecionados:*\n`;
+            selectedServices.forEach(s => msg += `- ${s}\n`);
 
-                <div class="sst-card">
-                    <div class="sst-icon"><i class="fa-solid fa-clipboard-check"></i></div>
-                    <h3>LTCAT e Laudos</h3>
-                    <p>Laudos Técnicos das Condições Ambientais do Trabalho para caracterização de insalubridade e periculosidade.</p>
-                </div>
+            if (detalhes) {
+                msg += `\n*Detalhes do Projeto:*\n${detalhes}\n`;
+            }
 
-                <div class="sst-card">
-                    <div class="sst-icon"><i class="fa-solid fa-chart-line"></i></div>
-                    <h3>Dashboards de SST</h3>
-                    <p>Transformação de planilhas e inspeções em painéis visuais no Power BI para acompanhamento de KPIs.</p>
-                </div>
+            msg += `\nPodemos conversar sobre valores e prazos?`;
 
-                <div class="sst-card">
-                    <div class="sst-icon"><i class="fa-solid fa-mobile-retro"></i></div>
-                    <h3>Aplicativos Operacionais</h3>
-                    <p>Desenvolvimento de apps em AppSheet para checklists de campo e gestão de Ordens de Serviço.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+            const url = `https://wa.me/${NUMERO_WHATSAPP}?text=${encodeURIComponent(msg)}`;
+            window.open(url, '_blank');
+        });
+    }
 
-    <!-- 4. SOLICITAR PROPOSTA INTERATIVA -->
-    <section id="proposta" class="section bg-alt">
-        <div class="container">
-            <h2 class="section-title">Solicitar Proposta Personalizada</h2>
-            <p class="section-subtitle">Selecione os serviços de seu interesse e receba um orçamento diretamente no seu WhatsApp</p>
+    // 4. CHATBOT ATENDIMENTO ONLINE
+    const aiChatToggle = document.getElementById('ai-chat-toggle');
+    const aiChatBox = document.getElementById('ai-chat-box');
+    const chatCloseBtn = document.getElementById('chat-close-btn');
+    const chatMessages = document.getElementById('chat-messages');
+    const chatUserInput = document.getElementById('chat-user-input');
+    const chatSendBtn = document.getElementById('chat-send-btn');
 
-            <div class="proposal-box">
-                <form id="proposal-form">
-                    <div class="proposal-options">
-                        <label class="custom-checkbox">
-                            <input type="checkbox" name="servico" value="Landing Page Essencial">
-                            <span class="checkmark"></span>
-                            <div>
-                                <strong>Landing Page Essencial</strong>
-                                <small>Página única responsiva com botão de WhatsApp</small>
-                            </div>
-                        </label>
+    if (aiChatToggle && aiChatBox && chatCloseBtn) {
+        aiChatToggle.addEventListener('click', () => aiChatBox.classList.toggle('active'));
+        chatCloseBtn.addEventListener('click', () => aiChatBox.classList.remove('active'));
+    }
 
-                        <label class="custom-checkbox">
-                            <input type="checkbox" name="servico" value="Landing Page Profissional">
-                            <span class="checkmark"></span>
-                            <div>
-                                <strong>Landing Page Profissional</strong>
-                                <small>Com formulários, SEO, galeria e Chatbot IA</small>
-                            </div>
-                        </label>
+    function processarIA(pergunta) {
+        const p = pergunta.toLowerCase();
+        if (p.includes('plano') || p.includes('landing') || p.includes('site')) {
+            return "Temos 3 níveis de Landing Pages: <strong>Essencial</strong>, <strong>Profissional</strong> e <strong>Personalizada</strong>!";
+        } else if (p.includes('sst') || p.includes('pgr') || p.includes('ltcat') || p.includes('segurança')) {
+            return "Elaboramos documentações completas de <strong>SST (PGR, LTCAT, PCMSO)</strong> e dashboards no Power BI / AppSheet.";
+        } else {
+            return `Pode falar diretamente com o Alexsandro no WhatsApp! <br><br><a href="https://wa.me/${NUMERO_WHATSAPP}" target="_blank" class="btn btn-primary" style="padding: 6px 12px; font-size: 0.8rem; margin-top:5px;"><i class="fa-brands fa-whatsapp"></i> Abrir WhatsApp</a>`;
+        }
+    }
 
-                        <label class="custom-checkbox">
-                            <input type="checkbox" name="servico" value="Dashboard em Power BI / Excel">
-                            <span class="checkmark"></span>
-                            <div>
-                                <strong>Dashboards & Business Intelligence</strong>
-                                <small>Visualização de dados dinâmicos para gestão</small>
-                            </div>
-                        </label>
+    function enviarChat() {
+        if (!chatUserInput) return;
+        const txt = chatUserInput.value.trim();
+        if (!txt) return;
 
-                        <label class="custom-checkbox">
-                            <input type="checkbox" name="servico" value="Gestão / Documentação de SST">
-                            <span class="checkmark"></span>
-                            <div>
-                                <strong>Consultoria e Documentação em SST</strong>
-                                <small>Elaboração de PGR, LTCAT, PCMSO e checklists</small>
-                            </div>
-                        </label>
-                    </div>
+        const uDiv = document.createElement('div');
+        uDiv.className = 'chat-msg msg-user';
+        uDiv.textContent = txt;
+        chatMessages.appendChild(uDiv);
 
-                    <div class="form-group proposal-notes">
-                        <label for="proposal-detalhes">Detalhes adicionais do projeto (opcional):</label>
-                        <textarea id="proposal-detalhes" rows="3" placeholder="Conte brevemente sobre o seu segmento ou prazos esperados..."></textarea>
-                    </div>
+        chatUserInput.value = '';
+        chatMessages.scrollTop = chatMessages.scrollHeight;
 
-                    <button type="button" id="btn-send-proposal" class="btn btn-whatsapp-calc">
-                        <i class="fa-brands fa-whatsapp"></i> Enviar Proposta via WhatsApp
-                    </button>
-                </form>
-            </div>
-        </div>
-    </section>
+        setTimeout(() => {
+            const aiDiv = document.createElement('div');
+            aiDiv.className = 'chat-msg msg-ai';
+            aiDiv.innerHTML = processarIA(txt);
+            chatMessages.appendChild(aiDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }, 500);
+    }
 
-    <!-- 5. CONTATO -->
-    <section id="contato" class="section">
-        <div class="container">
-            <h2 class="section-title">Entre em Contato</h2>
-            <p class="section-subtitle">Fale diretamente comigo para esclarecer dúvidas ou iniciar sua parceria</p>
-
-            <div class="contact-grid">
-                <div class="contact-info">
-                    <h3>Canais de Atendimento</h3>
-                    <p>Estou à disposição para entender o momento da sua empresa e indicar a melhor solução técnica ou digital.</p>
-
-                    <div class="info-card">
-                        <i class="fa-brands fa-whatsapp"></i>
-                        <div>
-                            <strong>WhatsApp Direto</strong>
-                            <p><a href="https://wa.me/5581995758108" id="whatsapp-link" target="_blank">(81) 99575-8108</a></p>
-                        </div>
-                    </div>
-
-                    <div class="info-card">
-                        <i class="fa-solid fa-envelope"></i>
-                        <div>
-                            <strong>E-mail Profissional</strong>
-                            <p><a href="mailto:alexsandro_damasceno@hotmail.com">alexsandro_damasceno@hotmail.com</a></p>
-                        </div>
-                    </div>
-
-                    <div class="info-card">
-                        <i class="fa-solid fa-location-dot"></i>
-                        <div>
-                            <strong>Atendimento</strong>
-                            <p>Pernambuco & Remoto para todo o Brasil</p>
-                        </div>
-                    </div>
-                </div>
-
-                <form class="contact-form" id="contact-form">
-                    <div class="form-group">
-                        <label for="nome">Seu Nome / Empresa</label>
-                        <input type="text" id="nome" required placeholder="Ex: João Silva - Empresa X">
-                    </div>
-                    <div class="form-group">
-                        <label for="email">E-mail</label>
-                        <input type="email" id="email" required placeholder="seuemail@empresa.com">
-                    </div>
-                    <div class="form-group">
-                        <label for="mensagem">Mensagem</label>
-                        <textarea id="mensagem" rows="4" required placeholder="Como posso te ajudar hoje?"></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary btn-block"><i class="fa-solid fa-paper-plane"></i> Enviar Mensagem</button>
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container footer-container">
-            <p>&copy; 2026 Alexsandro Damasceno - ADS & SST. Todos os direitos reservados.</p>
-            <div class="social-links">
-                <a href="#" target="_blank" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
-                <a href="https://github.com/alexsandro-ads" target="_blank" title="GitHub"><i class="fa-brands fa-github"></i></a>
-                <a href="https://wa.me/5581995758108" target="_blank" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Botão Flutuante do WhatsApp -->
-    <a href="https://wa.me/5581995758108" class="whatsapp-float" id="whatsapp-float" target="_blank" title="Conversar no WhatsApp">
-        <i class="fa-brands fa-whatsapp"></i>
-    </a>
-
-    <!-- CHATBOT DE ATENDIMENTO COM FOTO PERSONALIZADA -->
-    <div class="ai-chat-toggle" id="ai-chat-toggle" title="Tire suas dúvidas online">
-        <img src="status.png" alt="Assistente Alexsandro" class="chat-toggle-img">
-        <span class="chat-badge-pulse"></span>
-    </div>
-
-    <div class="ai-chat-box" id="ai-chat-box">
-        <div class="chat-header">
-            <div class="chat-header-info">
-                <img src="status.png" alt="Alexsandro Damasceno" class="chat-avatar-img">
-                <div>
-                    <strong>Assistente Alexsandro</strong>
-                    <small><i class="fa-solid fa-circle text-success"></i> Online agora</small>
-                </div>
-            </div>
-            <button class="chat-close-btn" id="chat-close-btn">&times;</button>
-        </div>
-        <div class="chat-messages" id="chat-messages">
-            <div class="chat-msg msg-ai">
-                Olá! Sou o assistente virtual do Alexsandro Damasceno. 👋<br>Em que posso te ajudar hoje? Pergunte sobre nossas <strong>Landing Pages</strong> ou consultoria em <strong>SST</strong>!
-            </div>
-        </div>
-        <div class="chat-input-area">
-            <input type="text" id="chat-user-input" placeholder="Digite sua dúvida...">
-            <button id="chat-send-btn"><i class="fa-solid fa-paper-plane"></i></button>
-        </div>
-    </div>
-
-    <script src="script.js"></script>
-</body>
-</html>
+    if (chatSendBtn && chatUserInput) {
+        chatSendBtn.addEventListener('click', enviarChat);
+        chatUserInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') enviarChat();
+        });
+    }
+});
