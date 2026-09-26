@@ -1,15 +1,16 @@
-// NÚMERO DO WHATSAPP CONFIGURADO
+// --- CONFIGURAÇÃO DO WHATSAPP COM SEU NÚMERO REAL ---
 const NUMERO_WHATSAPP = "5581995758108";
 
 document.addEventListener('DOMContentLoaded', () => {
 
-    // 1. Atualizar botão flutuante do WhatsApp
+    // 1. Atualiza links fixos do WhatsApp
     const whatsappFloat = document.getElementById('whatsapp-float');
-    if (whatsappFloat) {
-        whatsappFloat.href = `https://wa.me/${NUMERO_WHATSAPP}`;
-    }
+    const whatsappLink = document.getElementById('whatsapp-link');
+    
+    if (whatsappFloat) whatsappFloat.href = `https://wa.me/${NUMERO_WHATSAPP}`;
+    if (whatsappLink) whatsappLink.href = `https://wa.me/${NUMERO_WHATSAPP}`;
 
-    // 2. Menu Mobile (Hamburguer)
+    // 2. Menu Mobile e Scroll Ativo
     const hamburger = document.getElementById('hamburger');
     const navMenu = document.getElementById('nav-menu');
     const navLinks = document.querySelectorAll('.nav-link');
@@ -26,24 +27,44 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 3. Formit de Proposta via WhatsApp
+    // Marca o item do menu correspondente à seção visível
+    window.addEventListener('scroll', () => {
+        let current = '';
+        const sections = document.querySelectorAll('section');
+
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop - 100;
+            if (pageYOffset >= sectionTop) {
+                current = section.getAttribute('id');
+            }
+        });
+
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === `#${current}`) {
+                link.classList.add('active');
+            }
+        });
+    });
+
+    // 3. Formulário de Solicitação de Proposta em Tempo Real
     const btnSendProposal = document.getElementById('btn-send-proposal');
+    const proposalForm = document.getElementById('proposal-form');
 
-    if (btnSendProposal) {
-        btnSendProposal.addEventListener('click', (event) => {
-            event.preventDefault();
+    if (btnSendProposal && proposalForm) {
+        btnSendProposal.addEventListener('click', () => {
+            const selectedServices = [];
+            const checkboxes = proposalForm.querySelectorAll('input[type="checkbox"]:checked');
+            const detalhes = document.getElementById('proposal-detalhes').value.trim();
 
-            const checkboxes = document.querySelectorAll('#proposal-form input[type="checkbox"]:checked');
-            const detalhesInput = document.getElementById('proposal-detalhes');
-            const detalhes = detalhesInput ? detalhesInput.value.trim() : '';
+            checkboxes.forEach(cb => {
+                selectedServices.push(cb.value);
+            });
 
-            if (checkboxes.length === 0) {
-                alert('Por favor, selecione pelo menos um serviço antes de solicitar a proposta.');
+            if (selectedServices.length === 0) {
+                alert('Por favor, selecione ao menos um serviço para solicitar a proposta.');
                 return;
             }
-
-            const selectedServices = [];
-            checkboxes.forEach(cb => selectedServices.push(cb.value));
 
             let msg = `Olá, Alexsandro! Gostaria de solicitar um orçamento pelo site.\n\n`;
             msg += `*Serviços Selecionados:*\n`;
@@ -60,7 +81,22 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 4. Chatbot Atendimento
+    // 4. Formulário de Contato Direto
+    const contactForm = document.getElementById('contact-form');
+    if (contactForm) {
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const nome = document.getElementById('nome').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const mensagem = document.getElementById('mensagem').value.trim();
+
+            let msg = `Olá, Alexsandro! Meu nome é *${nome}* (${email}).\n\n*Mensagem:*\n${mensagem}`;
+            const url = `https://wa.me/${NUMERO_WHATSAPP}?text=${encodeURIComponent(msg)}`;
+            window.open(url, '_blank');
+        });
+    }
+
+    // 5. CHATBOT ATENDIMENTO ONLINE
     const aiChatToggle = document.getElementById('ai-chat-toggle');
     const aiChatBox = document.getElementById('ai-chat-box');
     const chatCloseBtn = document.getElementById('chat-close-btn');
@@ -75,17 +111,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function processarIA(pergunta) {
         const p = pergunta.toLowerCase();
+
         if (p.includes('plano') || p.includes('landing') || p.includes('site')) {
-            return "Trabalhamos com criação de Landing Pages otimizadas e personalizadas para o seu negócio!";
+            return "Temos 3 níveis de Landing Pages: <strong>Essencial</strong> (rápida/direta), <strong>Profissional</strong> (com formulários/SEO) e <strong>Personalizada</strong> (com Dashboards e Apps)!";
         } else if (p.includes('sst') || p.includes('pgr') || p.includes('ltcat') || p.includes('segurança')) {
-            return "Oferecemos elaboração de PGR, LTCAT, PCMSO e automações em Power BI / AppSheet.";
+            return "Desenvolvemos documentações completas de <strong>SST (PGR, LTCAT, PCMSO)</strong>, além de dashboards operacionais e checklists no AppSheet.";
+        } else if (p.includes('valor') || p.includes('preço') || p.includes('quanto') || p.includes('orçamento')) {
+            return `Os projetos são sob medida. <a href="https://wa.me/${NUMERO_WHATSAPP}" target="_blank" style="color:#60a5fa;">Clique aqui para negociar pelo WhatsApp!</a>`;
         } else {
-            return `Pode falar diretamente com o Alexsandro no WhatsApp! <br><br><a href="https://wa.me/${NUMERO_WHATSAPP}" target="_blank" style="color:#00c6ff; font-weight:bold;">Clique aqui para abrir a conversa</a>`;
+            return `Obrigado pela mensagem! Fale direto com o Alexsandro no WhatsApp para analisar o seu projeto. <br><br><a href="https://wa.me/${NUMERO_WHATSAPP}" target="_blank" class="btn btn-primary" style="padding: 6px 12px; font-size: 0.8rem; margin-top:5px;"><i class="fa-brands fa-whatsapp"></i> Abrir WhatsApp</a>`;
         }
     }
 
     function enviarChat() {
-        if (!chatUserInput) return;
         const txt = chatUserInput.value.trim();
         if (!txt) return;
 
@@ -103,7 +141,7 @@ document.addEventListener('DOMContentLoaded', () => {
             aiDiv.innerHTML = processarIA(txt);
             chatMessages.appendChild(aiDiv);
             chatMessages.scrollTop = chatMessages.scrollHeight;
-        }, 400);
+        }, 500);
     }
 
     if (chatSendBtn && chatUserInput) {
