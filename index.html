@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alexsandro Damasceno | Freelancer em ADS e SST</title>
+    <title>Alexsandro Damasceno | ADS & SST Especialista</title>
     <link rel="stylesheet" href="style.css">
     <!-- Google Fonts & Font Awesome Icons -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,18 +14,18 @@
 <body>
 
     <!-- Header / Navbar -->
-    <header class="navbar">
+    <header class="navbar" id="top-navbar">
         <div class="container nav-container">
             <a href="#home" class="logo-brand">
-                <img src="img/logo.png" alt="Logo Alexsandro Damasceno" class="nav-logo-img" onerror="this.style.display='none'">
-                <span><span class="logo-accent">&lt;/&gt;</span> Alexsandro Damasceno</span>
+                <span class="logo-icon">&lt;/&gt;</span>
+                <span class="logo-text">Alexsandro <span class="highlight">Damasceno</span></span>
             </a>
             <nav class="nav-menu" id="nav-menu">
-                <a href="#home" class="nav-link active">Início</a>
-                <a href="#planos" class="nav-link">Planos de Landing Page</a>
-                <a href="#servicos" class="nav-link">ADS & SST</a>
-                <a href="#simulador" class="nav-link">Solicitar Proposta</a>
-                <a href="#contato" class="nav-link btn-nav">Contato</a>
+                <a href="#home" class="nav-link active"><i class="fa-solid fa-house"></i> Início</a>
+                <a href="#planos" class="nav-link"><i class="fa-solid fa-layer-group"></i> Planos de Landing</a>
+                <a href="#sst" class="nav-link"><i class="fa-solid fa-shield-halved"></i> Gestão de SST</a>
+                <a href="#proposta" class="nav-link"><i class="fa-solid fa-file-signature"></i> Solicitar Proposta</a>
+                <a href="#contato" class="nav-link btn-nav"><i class="fa-solid fa-paper-plane"></i> Contato</a>
             </nav>
             <div class="hamburger" id="hamburger">
                 <i class="fa-solid fa-bars"></i>
@@ -33,224 +33,244 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
+    <!-- 1. INÍCIO / HERO SECTION -->
     <section id="home" class="hero">
         <div class="container hero-container">
             <div class="hero-content">
-                <span class="badge">ALEXSANDRO DAMASCENO &rarr; FREELANCER EM ADS E SST</span>
-                <h1>Landing Pages de <br><span class="highlight">Alta Conversão</span> para o Seu Negócio</h1>
+                <span class="badge"><i class="fa-solid fa-certificate"></i> Soluções em ADS e SST</span>
+                <h1>Engenharia de Software e <br><span class="highlight">Segurança do Trabalho</span></h1>
                 <p class="hero-subtitle">
-                    Desenvolvimento sob medida de Landing Pages modernas, ultra-rápidas e responsivas. Unindo inteligência de dados (ADS) e rigor técnico (SST) para atrair mais clientes e fechar contratos.
+                    Transformo ideias em Landing Pages de alta conversão, dashboards analíticos e sistemas de gestão em SST (PGR, LTCAT, PCMSO) para impulsionar e proteger a sua empresa.
                 </p>
+
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <strong>100%</strong>
+                        <span>Responsivo</span>
+                    </div>
+                    <div class="stat-item">
+                        <strong>Alta</strong>
+                        <span>Conversão</span>
+                    </div>
+                    <div class="stat-item">
+                        <strong>Rigor</strong>
+                        <span>Técnico SST</span>
+                    </div>
+                </div>
+
                 <div class="hero-buttons">
-                    <a href="#planos" class="btn btn-primary"><i class="fa-solid fa-rocket"></i> Ver Pacotes (Básico, Médio, Profissional)</a>
-                    <a href="#simulador" class="btn btn-secondary"><i class="fa-solid fa-comments"></i> Negociar Projeto</a>
+                    <a href="#planos" class="btn btn-primary"><i class="fa-solid fa-rocket"></i> Ver Planos de Sites</a>
+                    <a href="#proposta" class="btn btn-secondary"><i class="fa-solid fa-calculator"></i> Monte Sua Proposta</a>
                 </div>
             </div>
+
             <div class="hero-card">
-                <div class="card-inner">
+                <div class="card-glass">
                     <div class="card-header">
-                        <div class="code-icon-box">
-                            <i class="fa-solid fa-code card-icon"></i>
+                        <div class="avatar-wrapper">
+                            <img src="status.png" alt="Alexsandro Damasceno" class="hero-avatar-img">
+                            <span class="status-dot"></span>
                         </div>
                         <div>
-                            <h3>Soluções em ADS & SST</h3>
-                            <p>Páginas prontas para gerar vendas e agendar clientes</p>
+                            <h3>Alexsandro Damasceno</h3>
+                            <p>Análise de Sistemas & SST</p>
                         </div>
                     </div>
                     <ul class="skills-list">
-                        <li><i class="fa-solid fa-circle-check"></i> Design 100% Responsivo (Mobile, Tablet, PC)</li>
-                        <li><i class="fa-solid fa-circle-check"></i> Integração com WhatsApp e Formulários</li>
-                        <li><i class="fa-solid fa-circle-check"></i> Otimizado para SEO e Alta Velocidade</li>
-                        <li><i class="fa-solid fa-circle-check"></i> Opção de Inclusão de Dashboards ou Relatórios</li>
+                        <li><i class="fa-solid fa-check"></i> Desenvolvimento de Landing Pages Modernas</li>
+                        <li><i class="fa-solid fa-check"></i> Criação de Dashboards (Power BI / Excel)</li>
+                        <li><i class="fa-solid fa-check"></i> Sistemas Customizados (AppSheet)</li>
+                        <li><i class="fa-solid fa-check"></i> Laudos e Gestão de SST (NR-01, NR-12)</li>
                     </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Planos de Landing Pages -->
+    <!-- 2. PLANOS DE LANDING PAGE -->
     <section id="planos" class="section bg-alt">
         <div class="container">
             <h2 class="section-title">Planos de Landing Page</h2>
-            <p class="section-subtitle">Escolha o nível de estrutura que seu negócio precisa e negocie diretamente comigo</p>
+            <p class="section-subtitle">Páginas modernas desenvolvidas sob medida para atrair e converter clientes</p>
 
             <div class="plans-grid">
-                <!-- Plano Básico -->
+                <!-- Plano Essencial -->
                 <div class="plan-card">
                     <div class="plan-header">
-                        <span class="plan-badge">Nível 1</span>
-                        <h3>Landing Page Básica</h3>
-                        <p>Ideal para presença digital rápida, direta e focada em contatos via WhatsApp.</p>
-                        <div class="price-tag">Sob Consulta</div>
+                        <span class="plan-badge">Start</span>
+                        <h3>Essencial</h3>
+                        <p>Para profissionais e pequenas empresas que precisam de presença digital rápida.</p>
                     </div>
                     <ul class="plan-features">
-                        <li><i class="fa-solid fa-check"></i> Página Única Responsiva</li>
-                        <li><i class="fa-solid fa-check"></i> Seção Sobre, Serviços e Contato</li>
-                        <li><i class="fa-solid fa-check"></i> Botão Flutuante de WhatsApp</li>
-                        <li><i class="fa-solid fa-check"></i> Hospedagem e Configuração Básica</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Landing Page de Seção Única</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Design 100% Responsivo (Mobile/PC)</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Botão Flutuante do WhatsApp</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Otimização e Carregamento Rápido</li>
                     </ul>
-                    <a href="#simulador" class="btn btn-secondary btn-block">Consultar Condições</a>
+                    <a href="#proposta" class="btn btn-secondary btn-block">Solicitar este Plano</a>
                 </div>
 
-                <!-- Plano Médio -->
+                <!-- Plano Intermediário (Destaque) -->
                 <div class="plan-card plan-featured">
                     <div class="plan-header">
-                        <span class="plan-badge featured-badge">Mais Recomendado</span>
-                        <h3>Landing Page Média</h3>
-                        <p>Para quem busca capturar leads, apresentar portfólio e se destacar da concorrência.</p>
-                        <div class="price-tag">Sob Consulta</div>
+                        <span class="plan-badge featured-badge">Mais Vendido</span>
+                        <h3>Profissional</h3>
+                        <p>Estrutura completa com foco total em conversão de leads e autoridade de marca.</p>
                     </div>
                     <ul class="plan-features">
-                        <li><i class="fa-solid fa-check"></i> <strong>Tudo do Plano Básico +</strong></li>
-                        <li><i class="fa-solid fa-check"></i> Formulário Dinâmico de Orçamento</li>
-                        <li><i class="fa-solid fa-check"></i> Seção de Galeria de Fotos / Projetos</li>
-                        <li><i class="fa-solid fa-check"></i> Integração com Redes Sociais e Maps</li>
-                        <li><i class="fa-solid fa-check"></i> SEO Intermediário para Buscas no Google</li>
+                        <li><i class="fa-solid fa-circle-check"></i> <strong>Tudo do Plano Essencial +</strong></li>
+                        <li><i class="fa-solid fa-circle-check"></i> Formulário de Orçamento / Leads</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Galeria de Portfólio / Serviços</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Chatbot IA de Atendimento Integrado</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Otimização para Google (SEO)</li>
                     </ul>
-                    <a href="#simulador" class="btn btn-primary btn-block">Consultar Condições</a>
+                    <a href="#proposta" class="btn btn-primary btn-block">Solicitar este Plano</a>
                 </div>
 
-                <!-- Plano Profissional -->
+                <!-- Plano Avançado -->
                 <div class="plan-card">
                     <div class="plan-header">
-                        <span class="plan-badge">Nível Avançado</span>
-                        <h3>Landing Page Profissional</h3>
-                        <p>A solução completa para máxima conversão, animações e integrações personalizadas.</p>
-                        <div class="price-tag">Sob Consulta</div>
+                        <span class="plan-badge">Enterprise</span>
+                        <h3>Personalizado</h3>
+                        <p>Solução sob medida integrando dashboards de dados e sistemas operacionais.</p>
                     </div>
                     <ul class="plan-features">
-                        <li><i class="fa-solid fa-check"></i> <strong>Tudo do Plano Médio +</strong></li>
-                        <li><i class="fa-solid fa-check"></i> Design Exclusivo Personalizado</li>
-                        <li><i class="fa-solid fa-check"></i> Simulador / Calculadora Interativa</li>
-                        <li><i class="fa-solid fa-check"></i> Integração com Dashboards Power BI ou Apps</li>
-                        <li><i class="fa-solid fa-check"></i> Otimização Completa de Velocidade</li>
+                        <li><i class="fa-solid fa-circle-check"></i> <strong>Tudo do Plano Profissional +</strong></li>
+                        <li><i class="fa-solid fa-circle-check"></i> Integração com Power BI / Dashboards</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Formulários Dinâmicos / Calculadoras</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Automações e Conexão via API</li>
                     </ul>
-                    <a href="#simulador" class="btn btn-secondary btn-block">Consultar Condições</a>
+                    <a href="#proposta" class="btn btn-secondary btn-block">Solicitar este Plano</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Outros Serviços (ADS & SST) -->
-    <section id="servicos" class="section">
+    <!-- 3. GESTÃO DE SST -->
+    <section id="sst" class="section">
         <div class="container">
-            <h2 class="section-title">Serviços Adicionais em ADS e SST</h2>
-            <p class="section-subtitle">Soluções complementares para gestão de dados e conformidade técnica</p>
+            <h2 class="section-title">Gestão de Segurança e Saúde no Trabalho (SST)</h2>
+            <p class="section-subtitle">Conformidade legal, prevenção de riscos e soluções técnicas para a sua empresa</p>
 
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon"><i class="fa-solid fa-chart-pie"></i></div>
-                    <h3>Dashboards em Power BI</h3>
-                    <p>Criação e integração de painéis gerenciais dinâmicos diretamente no seu site para acompanhamento em tempo real.</p>
+            <div class="sst-grid">
+                <div class="sst-card">
+                    <div class="sst-icon"><i class="fa-solid fa-file-contract"></i></div>
+                    <h3>PGR & PCMSO</h3>
+                    <p>Elaboração e acompanhamento do Programa de Gerenciamento de Riscos e PCMSO em conformidade com as NRs.</p>
                 </div>
 
-                <div class="service-card">
-                    <div class="service-icon"><i class="fa-solid fa-mobile-screen-button"></i></div>
-                    <h3>Sistemas & Apps (AppSheet)</h3>
-                    <p>Desenvolvimento de aplicativos sob medida para automação de processos, checklists e controle operacional.</p>
+                <div class="sst-card">
+                    <div class="sst-icon"><i class="fa-solid fa-clipboard-check"></i></div>
+                    <h3>LTCAT e Laudos</h3>
+                    <p>Laudos Técnicos das Condições Ambientais do Trabalho para caracterização de insalubridade e periculosidade.</p>
                 </div>
 
-                <div class="service-card">
-                    <div class="service-icon"><i class="fa-solid fa-shield-halved"></i></div>
-                    <h3>Consultoria e Documentação SST</h3>
-                    <p>Elaboração de laudos e programas (PGR, LTCAT, PCMSO) com total rigor técnico para adequação às NRs.</p>
+                <div class="sst-card">
+                    <div class="sst-icon"><i class="fa-solid fa-chart-line"></i></div>
+                    <h3>Dashboards de SST</h3>
+                    <p>Transformação de planilhas e inspeções em painéis visuais no Power BI para acompanhamento de KPIs.</p>
+                </div>
+
+                <div class="sst-card">
+                    <div class="sst-icon"><i class="fa-solid fa-mobile-retro"></i></div>
+                    <h3>Aplicativos Operacionais</h3>
+                    <p>Desenvolvimento de apps em AppSheet para checklists de campo e gestão de Ordens de Serviço.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Seleção de Serviços para Negociação -->
-    <section id="simulador" class="section bg-alt">
+    <!-- 4. SOLICITAR PROPOSTA INTERATIVA -->
+    <section id="proposta" class="section bg-alt">
         <div class="container">
-            <h2 class="section-title">Monte sua Proposta de Projeto</h2>
-            <p class="section-subtitle">Marque as opções de seu interesse e solicite um orçamento direto pelo WhatsApp</p>
+            <h2 class="section-title">Solicitar Proposta Personalizada</h2>
+            <p class="section-subtitle">Selecione os serviços de seu interesse e receba um orçamento diretamente no seu WhatsApp</p>
 
-            <div class="calculator-wrapper">
-                <form id="calc-form">
-                    <div class="calc-options">
-                        <label class="calc-checkbox">
-                            <input type="checkbox" name="servico" data-nome="Landing Page Básica">
+            <div class="proposal-box">
+                <form id="proposal-form">
+                    <div class="proposal-options">
+                        <label class="custom-checkbox">
+                            <input type="checkbox" name="servico" value="Landing Page Essencial">
                             <span class="checkmark"></span>
-                            <div class="option-text">
-                                <strong>Landing Page Básica</strong>
-                                <small>Página única responsiva com foco em contatos rápidos</small>
+                            <div>
+                                <strong>Landing Page Essencial</strong>
+                                <small>Página única responsiva com botão de WhatsApp</small>
                             </div>
                         </label>
 
-                        <label class="calc-checkbox">
-                            <input type="checkbox" name="servico" data-nome="Landing Page Média">
+                        <label class="custom-checkbox">
+                            <input type="checkbox" name="servico" value="Landing Page Profissional">
                             <span class="checkmark"></span>
-                            <div class="option-text">
-                                <strong>Landing Page Média</strong>
-                                <small>Inclui formulários de lead, galeria e otimização SEO</small>
-                            </div>
-                        </label>
-
-                        <label class="calc-checkbox">
-                            <input type="checkbox" name="servico" data-nome="Landing Page Profissional">
-                            <span class="checkmark"></span>
-                            <div class="option-text">
+                            <div>
                                 <strong>Landing Page Profissional</strong>
-                                <small>Layout exclusivo com simuladores e integrações avançadas</small>
+                                <small>Com formulários, SEO, galeria e Chatbot IA</small>
                             </div>
                         </label>
 
-                        <label class="calc-checkbox">
-                            <input type="checkbox" name="servico" data-nome="Integração de Dashboard / Power BI">
+                        <label class="custom-checkbox">
+                            <input type="checkbox" name="servico" value="Dashboard em Power BI / Excel">
                             <span class="checkmark"></span>
-                            <div class="option-text">
-                                <strong>Integração com Power BI / Dashboards</strong>
-                                <small>Exibição de relatórios ou indicadores dentro do site</small>
+                            <div>
+                                <strong>Dashboards & Business Intelligence</strong>
+                                <small>Visualização de dados dinâmicos para gestão</small>
                             </div>
                         </label>
 
-                        <label class="calc-checkbox">
-                            <input type="checkbox" name="servico" data-nome="Consultoria / Documentação de SST">
+                        <label class="custom-checkbox">
+                            <input type="checkbox" name="servico" value="Gestão / Documentação de SST">
                             <span class="checkmark"></span>
-                            <div class="option-text">
-                                <strong>Consultoria de Segurança do Trabalho (SST)</strong>
-                                <small>Elaboração de programas, laudos e assessoria técnica</small>
+                            <div>
+                                <strong>Consultoria e Documentação em SST</strong>
+                                <small>Elaboração de PGR, LTCAT, PCMSO e checklists</small>
                             </div>
                         </label>
                     </div>
 
-                    <div class="calc-summary">
-                        <h3>Negociação Direta e Personalizada</h3>
-                        <p class="calc-note">Após escolher seus itens, você será direcionado ao WhatsApp para alinharmos detalhes técnicos, prazos e condições comerciais.</p>
-                        <button type="button" class="btn btn-whatsapp-calc" id="btn-whatsapp-calc">
-                            <i class="fa-brands fa-whatsapp"></i> Solicitar Orçamento via WhatsApp
-                        </button>
+                    <div class="form-group proposal-notes">
+                        <label for="proposal-detalhes">Detalhes adicionais do projeto (opcional):</label>
+                        <textarea id="proposal-detalhes" rows="3" placeholder="Conte brevemente sobre o seu segmento ou prazos esperados..."></textarea>
                     </div>
+
+                    <button type="button" id="btn-send-proposal" class="btn btn-whatsapp-calc">
+                        <i class="fa-brands fa-whatsapp"></i> Enviar Proposta via WhatsApp
+                    </button>
                 </form>
             </div>
         </div>
     </section>
 
-    <!-- Contato -->
+    <!-- 5. CONTATO -->
     <section id="contato" class="section">
         <div class="container">
             <h2 class="section-title">Entre em Contato</h2>
-            <p class="section-subtitle">Tire suas dúvidas ou detalhe a sua demanda</p>
+            <p class="section-subtitle">Fale diretamente comigo para esclarecer dúvidas ou iniciar sua parceria</p>
 
             <div class="contact-grid">
                 <div class="contact-info">
-                    <h3>Atendimento Direto</h3>
-                    <p>Fale diretamente comigo para avaliar a melhor estratégia para o seu projeto digital ou técnico.</p>
-                    
-                    <div class="info-item">
+                    <h3>Canais de Atendimento</h3>
+                    <p>Estou à disposição para entender o momento da sua empresa e indicar a melhor solução técnica ou digital.</p>
+
+                    <div class="info-card">
                         <i class="fa-brands fa-whatsapp"></i>
                         <div>
-                            <strong>WhatsApp:</strong>
-                            <p><a href="https://wa.me/5581995758108" id="whatsapp-link" target="_blank">(81) 99575-8108</a></p>
+                            <strong>WhatsApp Directo</strong>
+                            <p><a href="https://wa.me/5581995758108" id="whatsapp-link" target="_blank">Clique para chamar no chat</a></p>
                         </div>
                     </div>
 
-                    <div class="info-item">
+                    <div class="info-card">
                         <i class="fa-solid fa-envelope"></i>
                         <div>
-                            <strong>E-mail:</strong>
+                            <strong>E-mail Profissional</strong>
                             <p>alexsandro_damasceno@hotmail.com</p>
+                        </div>
+                    </div>
+
+                    <div class="info-card">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <div>
+                            <strong>Atendimento</strong>
+                            <p>Remoto para todo o Brasil</p>
                         </div>
                     </div>
                 </div>
@@ -258,17 +278,17 @@
                 <form class="contact-form" id="contact-form">
                     <div class="form-group">
                         <label for="nome">Seu Nome / Empresa</label>
-                        <input type="text" id="nome" required placeholder="Digite seu nome ou o da empresa">
+                        <input type="text" id="nome" required placeholder="Ex: João Silva - Empresa X">
                     </div>
                     <div class="form-group">
-                        <label for="email">E-mail de Contato</label>
-                        <input type="email" id="email" required placeholder="seuemail@dominio.com">
+                        <label for="email">E-mail</label>
+                        <input type="email" id="email" required placeholder="seuemail@empresa.com">
                     </div>
                     <div class="form-group">
-                        <label for="mensagem">Mensagem / Detalhes do Projeto</label>
-                        <textarea id="mensagem" rows="4" required placeholder="Descreva o que você precisa..."></textarea>
+                        <label for="mensagem">Mensagem</label>
+                        <textarea id="mensagem" rows="4" required placeholder="Como posso te ajudar hoje?"></textarea>
                     </div>
-                    <button type="submit" class="btn btn-primary btn-block"><i class="fa-solid fa-paper-plane"></i> Enviar pelo WhatsApp</button>
+                    <button type="submit" class="btn btn-primary btn-block"><i class="fa-solid fa-paper-plane"></i> Enviar Mensagem</button>
                 </form>
             </div>
         </div>
@@ -277,22 +297,22 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container footer-container">
-            <p>&copy; Alexsandro Damasceno - Freelancer em ADS e SST. Todos os direitos reservados.</p>
+            <p>&copy; 2026 Alexsandro Damasceno - ADS & SST. Todos os direitos reservados.</p>
             <div class="social-links">
-                <a href="#" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
-                <a href="#" target="_blank"><i class="fa-brands fa-github"></i></a>
-                <a href="#" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+                <a href="#" target="_blank" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="#" target="_blank" title="GitHub"><i class="fa-brands fa-github"></i></a>
+                <a href="#" target="_blank" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
             </div>
         </div>
     </footer>
 
-    <!-- Botão Flutuante WhatsApp -->
-    <a href="https://wa.me/5581995758108" class="whatsapp-float" id="whatsapp-float" target="_blank" title="Falar no WhatsApp">
+    <!-- Botão Flutuante do WhatsApp -->
+    <a href="https://wa.me/5581995758108" class="whatsapp-float" id="whatsapp-float" target="_blank" title="Conversar no WhatsApp">
         <i class="fa-brands fa-whatsapp"></i>
     </a>
 
-    <!-- WIDGET DE CHAT COM IA (ATENDIMENTO ONLINE COM IMAGEM PERSONALIZADA) -->
-    <div class="ai-chat-toggle" id="ai-chat-toggle" title="Tire dúvidas com nossa IA">
+    <!-- CHATBOT DE ATENDIMENTO COM FOTO PERSONALIZADA -->
+    <div class="ai-chat-toggle" id="ai-chat-toggle" title="Tire suas dúvidas online">
         <img src="status.png" alt="Assistente Alexsandro" class="chat-toggle-img">
         <span class="chat-badge-pulse"></span>
     </div>
@@ -302,7 +322,7 @@
             <div class="chat-header-info">
                 <img src="status.png" alt="Alexsandro Damasceno" class="chat-avatar-img">
                 <div>
-                    <strong>Assistente IA Alexsandro</strong>
+                    <strong>Assistente Alexsandro</strong>
                     <small><i class="fa-solid fa-circle text-success"></i> Online agora</small>
                 </div>
             </div>
@@ -310,11 +330,11 @@
         </div>
         <div class="chat-messages" id="chat-messages">
             <div class="chat-msg msg-ai">
-                Olá! Sou o assistente virtual do Alexsandro Damasceno. 👋<br>Como posso te ajudar hoje? Pode perguntar sobre as <strong>Landing Pages</strong>, serviços de <strong>ADS</strong> ou <strong>SST</strong>!
+                Olá! Sou o assistente virtual do Alexsandro Damasceno. 👋<br>Em que posso te ajudar hoje? Pergunte sobre nossas <strong>Landing Pages</strong> ou consultoria em <strong>SST</strong>!
             </div>
         </div>
         <div class="chat-input-area">
-            <input type="text" id="chat-user-input" placeholder="Digite sua dúvida aqui...">
+            <input type="text" id="chat-user-input" placeholder="Digite sua dúvida...">
             <button id="chat-send-btn"><i class="fa-solid fa-paper-plane"></i></button>
         </div>
     </div>
