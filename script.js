@@ -1,14 +1,13 @@
-const NUMERO_WHATSAPP = "5581995758108";
-
 document.addEventListener('DOMContentLoaded', () => {
+    const PHONE_NUMBER = "5581999999999"; // Substitua pelo seu número do WhatsApp (DDI + DDD + Número)
 
-    // 1. Atualizar link do WhatsApp flutuante
+    // Configuração do Link do Botão Flutuante
     const whatsappFloat = document.getElementById('whatsapp-float');
     if (whatsappFloat) {
-        whatsappFloat.href = `https://wa.me/${NUMERO_WHATSAPP}`;
+        whatsappFloat.href = `https://wa.me/${PHONE_NUMBER}?text=${encodeURIComponent('Olá Alexsandro, gostaria de mais informações sobre seus serviços!')}`;
     }
 
-    // 2. Menu Mobile
+    // Toggle Menu Mobile
     const hamburger = document.getElementById('hamburger');
     const navMenu = document.getElementById('nav-menu');
 
@@ -16,129 +15,118 @@ document.addEventListener('DOMContentLoaded', () => {
         hamburger.addEventListener('click', () => {
             navMenu.classList.toggle('active');
         });
+
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+            });
+        });
     }
 
-    // 3. Proposta via WhatsApp
+    // Gerador de Proposta via WhatsApp
     const btnSendProposal = document.getElementById('btn-send-proposal');
     if (btnSendProposal) {
-        btnSendProposal.addEventListener('click', (e) => {
-            e.preventDefault();
-
+        btnSendProposal.addEventListener('click', () => {
             const checkboxes = document.querySelectorAll('#proposal-form input[type="checkbox"]:checked');
-            const detalhesInput = document.getElementById('proposal-detalhes');
-            const detalhes = detalhesInput ? detalhesInput.value.trim() : '';
+            const detalhes = document.getElementById('proposal-detalhes').value;
 
-            if (checkboxes.length === 0) {
-                alert('Por favor, selecione pelo menos um serviço antes de solicitar a proposta.');
+            if (checkboxes.length === 0 && !detalhes.trim()) {
+                alert('Por favor, selecione ao menos um serviço ou preencha os detalhes.');
                 return;
             }
 
-            const selectedServices = [];
-            checkboxes.forEach(cb => selectedServices.push(cb.value));
-
-            let msg = `Olá, Alexsandro! Gostaria de solicitar um orçamento pelo site.\n\n`;
-            msg += `*Serviços Selecionados:*\n`;
-            selectedServices.forEach(s => msg += `- ${s}\n`);
-
-            if (detalhes) {
-                msg += `\n*Detalhes do Projeto:*\n${detalhes}\n`;
+            let servicos = Array.from(checkboxes).map(cb => `• ${cb.value}`).join('\n');
+            let mensagem = `*Solicitação de Proposta - Alexsandro Damasceno*\n\n`;
+            
+            if (servicos) {
+                mensagem += `*Serviços Selecionados:*\n${servicos}\n\n`;
+            }
+            if (detalhes.trim()) {
+                mensagem += `*Detalhes do Projeto:*\n${detalhes.trim()}`;
             }
 
-            msg += `\nPodemos conversar sobre valores e prazos?`;
-
-            const url = `https://wa.me/${NUMERO_WHATSAPP}?text=${encodeURIComponent(msg)}`;
-            window.open(url, '_blank');
+            window.open(`https://wa.me/${PHONE_NUMBER}?text=${encodeURIComponent(mensagem)}`, '_blank');
         });
     }
 
-    // 4. Lógica do Chatbot
-    const aiChatToggle = document.getElementById('ai-chat-toggle');
-    const aiChatBox = document.getElementById('ai-chat-box');
+    // Lógica do Chatbot
+    const chatToggle = document.getElementById('ai-chat-toggle');
+    const chatBox = document.getElementById('ai-chat-box');
     const chatCloseBtn = document.getElementById('chat-close-btn');
-    const chatMessages = document.getElementById('chat-messages');
-    const chatUserInput = document.getElementById('chat-user-input');
     const chatSendBtn = document.getElementById('chat-send-btn');
+    const chatUserInput = document.getElementById('chat-user-input');
+    const chatMessages = document.getElementById('chat-messages');
 
-    if (aiChatToggle && aiChatBox && chatCloseBtn) {
-        aiChatToggle.addEventListener('click', () => aiChatBox.classList.toggle('active'));
-        chatCloseBtn.addEventListener('click', () => aiChatBox.classList.remove('active'));
+    if (chatToggle && chatBox && chatCloseBtn) {
+        chatToggle.addEventListener('click', () => {
+            chatBox.classList.toggle('active');
+        });
+
+        chatCloseBtn.addEventListener('click', () => {
+            chatBox.classList.remove('active');
+        });
     }
 
-    function processarIA(pergunta) {
-        const p = pergunta.toLowerCase();
+    function appendMessage(text, sender, isLink = false) {
+        const msgDiv = document.createElement('div');
+        msgDiv.classList.add('chat-msg', sender === 'user' ? 'msg-user' : 'msg-ai');
 
-        if (p.includes('site') || p.includes('landing') || p.includes('desenvolvimento') || p.includes('criar')) {
-            return `🚀 <strong>Desenvolvimento Web & Landing Pages</strong><br><br>
-                    Criamos sites modernos e otimizados para alta conversão!<br><br>
-                    <a href="https://wa.me/${NUMERO_WHATSAPP}?text=Olá,%20tenho%20interesse%20em%20um%20site" target="_blank" class="chat-btn-link">Solicitar Orçamento de Site</a>`;
-        } 
-        
-        if (p.includes('sst') || p.includes('pgr') || p.includes('ltcat') || p.includes('segurança')) {
-            return `🛡️ <strong>Gestão & Documentação de SST</strong><br><br>
-                    Elaboração de laudos e programas (PGR, LTCAT, PCMSO).<br><br>
-                    <a href="https://wa.me/${NUMERO_WHATSAPP}?text=Olá,%20preciso%20de%20ajuda%20com%20SST" target="_blank" class="chat-btn-link">Falar sobre Documentos SST</a>`;
-        } 
-        
-        if (p.includes('bi') || p.includes('power bi') || p.includes('appsheet') || p.includes('automação')) {
-            return `📊 <strong>Automação & Power BI / AppSheet</strong><br><br>
-                    Sistemas e dashboards para acompanhamento em tempo real.<br><br>
-                    <a href="https://wa.me/${NUMERO_WHATSAPP}?text=Olá,%20quero%20automatizar%20meus%20dados" target="_blank" class="chat-btn-link">Ver Soluções em Dados</a>`;
+        if (isLink) {
+            msgDiv.innerHTML = text;
+        } else {
+            msgDiv.textContent = text;
         }
 
-        return `👋 Como posso ajudar melhor?<br><br>
-                Fale diretamente comigo no WhatsApp:<br><br>
-                <a href="https://wa.me/${NUMERO_WHATSAPP}" target="_blank" class="chat-btn-link">💬 Conversar no WhatsApp</a>`;
-    }
-
-    function mostrarDigitando() {
-        const typingDiv = document.createElement('div');
-        typingDiv.className = 'chat-msg msg-ai typing-indicator';
-        typingDiv.id = 'typing-indicator';
-        typingDiv.innerHTML = `<span></span><span></span><span></span>`;
-        chatMessages.appendChild(typingDiv);
+        chatMessages.appendChild(msgDiv);
         chatMessages.scrollTop = chatMessages.scrollHeight;
     }
 
-    function removerDigitando() {
-        const indicator = document.getElementById('typing-indicator');
-        if (indicator) indicator.remove();
-    }
+    function processChatQuery(query) {
+        const lower = query.toLowerCase();
+        let reply = "Entendi! Posso te dar mais informações sobre desenvolvimento web, dashboards ou consultoria técnica de SST. Quer falar direto no WhatsApp?";
 
-    function enviarMensagem(texto) {
-        const txt = texto || (chatUserInput ? chatUserInput.value.trim() : '');
-        if (!txt) return;
-
-        const uDiv = document.createElement('div');
-        uDiv.className = 'chat-msg msg-user';
-        uDiv.textContent = txt;
-        chatMessages.appendChild(uDiv);
-
-        if (chatUserInput) chatUserInput.value = '';
-        chatMessages.scrollTop = chatMessages.scrollHeight;
-
-        mostrarDigitando();
-
-        setTimeout(() => {
-            removerDigitando();
-            const aiDiv = document.createElement('div');
-            aiDiv.className = 'chat-msg msg-ai';
-            aiDiv.innerHTML = processarIA(txt);
-            chatMessages.appendChild(aiDiv);
-            chatMessages.scrollTop = chatMessages.scrollHeight;
-        }, 600);
-    }
-
-    document.addEventListener('click', (e) => {
-        if (e.target.classList.contains('quick-opt-btn')) {
-            const query = e.target.getAttribute('data-query');
-            enviarMensagem(query);
+        if (lower.includes('site') || lower.includes('landing')) {
+            reply = "Desenvolvo Landing Pages de alta performance, 100% otimizadas para conversão e celulares. Escolha entre nossos planos Básico ou Avançado!";
+        } else if (lower.includes('sst') || lower.includes('pgr') || lower.includes('ltcat')) {
+            reply = "Elaboro documentações técnicas completas em SST (PGR, LTCAT, PCMSO) totalmente alinhadas às Normas Regulamentadoras (NRs).";
+        } else if (lower.includes('power bi') || lower.includes('appsheet') || lower.includes('dashboard')) {
+            reply = "Crio dashboards interativos em Power BI e aplicativos de gestão sob medida no AppSheet para automatizar os processos da sua empresa.";
         }
-    });
+
+        appendMessage(reply, 'ai');
+
+        const whatsAppLink = `<a href="https://wa.me/${PHONE_NUMBER}?text=${encodeURIComponent('Olá Alexsandro, vim pelo chat do site e gostaria de conversar sobre: ' + query)}" target="_blank" class="chat-btn-link"><i class="fa-brands fa-whatsapp"></i> Falar no WhatsApp</a>`;
+        appendMessage(whatsAppLink, 'ai', true);
+    }
 
     if (chatSendBtn && chatUserInput) {
-        chatSendBtn.addEventListener('click', () => enviarMensagem());
+        chatSendBtn.addEventListener('click', () => {
+            const text = chatUserInput.value.trim();
+            if (text) {
+                appendMessage(text, 'user');
+                chatUserInput.value = '';
+                setTimeout(() => processChatQuery(text), 600);
+            }
+        });
+
         chatUserInput.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') enviarMensagem();
+            if (e.key === 'Enter') {
+                chatSendBtn.click();
+            }
         });
     }
+
+    // Botões de Opção Rápida do Chatbot
+    document.querySelectorAll('.quick-opt-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const query = btn.getAttribute('data-query');
+            appendMessage(query, 'user');
+            
+            // Oculta as opções rápidas após a escolha
+            const quickOpts = document.getElementById('quick-options');
+            if (quickOpts) quickOpts.style.display = 'none';
+
+            setTimeout(() => processChatQuery(query), 600);
+        });
+    });
 });

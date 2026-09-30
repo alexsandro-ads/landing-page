@@ -1,4 +1,4 @@
-/* RESET & VARIÁVEIS DE ESTILO DA SUAS CAPTURAS */
+/* RESET & VARIÁVEIS DE ESTILO */
 * {
     margin: 0;
     padding: 0;
@@ -15,6 +15,10 @@
     --text-white: #ffffff;
     --text-muted: #94a3b8;
     --accent-green: #25d366;
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 body {
@@ -114,6 +118,20 @@ header {
     background-color: var(--blue-hover);
 }
 
+.hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+}
+
+.hamburger .bar {
+    width: 25px;
+    height: 3px;
+    background-color: var(--text-white);
+    border-radius: 2px;
+}
+
 /* HERO SECTION */
 .hero {
     padding: 7rem 2rem 4rem 2rem;
@@ -204,7 +222,13 @@ header {
     background-color: rgba(255, 255, 255, 0.1);
 }
 
-/* CARD LATERAL DIREITO */
+.btn-full {
+    width: 100%;
+    justify-content: center;
+    margin-top: auto;
+}
+
+/* CARD LATERAL DIREITO HERO */
 .profile-card {
     background-color: var(--card-dark);
     border: 1px solid var(--card-border);
@@ -260,19 +284,96 @@ header {
     font-size: 0.8rem;
 }
 
-/* SEÇÃO PROPOSTA */
+/* SEÇÃO GERAL & CARDS DE PORTFÓLIO/PLANOS */
 .section {
     padding: 4rem 2rem;
     max-width: 1280px;
     margin: 0 auto;
 }
 
+.bg-card-dark {
+    background-color: rgba(19, 27, 46, 0.5);
+    border-radius: 16px;
+}
+
 .section h2 {
     font-size: 2rem;
-    margin-bottom: 1.5rem;
+    margin-bottom: 2rem;
     text-align: center;
 }
 
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+}
+
+.card-item {
+    background-color: var(--card-dark);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.card-item:hover {
+    transform: translateY(-5px);
+    border-color: var(--blue-primary);
+}
+
+.card-item.highlight {
+    border: 1px solid var(--blue-primary);
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.15);
+}
+
+/* AJUSTE DAS IMAGENS: VISIBILIDADE 100% SEM CORTES */
+.card-image-container {
+    width: 100%;
+    height: 300px; /* Altura ideal para exibição legível de textos na imagem */
+    overflow: hidden;
+    background-color: #0a0f1d; /* Fundo escuro integrado */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px;
+    border-bottom: 1px solid var(--card-border);
+}
+
+.card-image-container img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain; /* Exibe 100% da imagem sem cortar nada */
+    border-radius: 6px;
+    transition: transform 0.3s ease;
+}
+
+.card-item:hover .card-image-container img {
+    transform: scale(1.02);
+}
+
+.card-content {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.card-content h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.8rem;
+    color: var(--text-white);
+}
+
+.card-content p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+    flex: 1;
+}
+
+/* SEÇÃO PROPOSTA */
 .proposal-container {
     max-width: 650px;
     margin: 0 auto;
@@ -298,6 +399,17 @@ header {
     padding: 12px 16px;
     border-radius: 8px;
     cursor: pointer;
+    transition: border-color 0.2s;
+}
+
+.checkbox-card:hover {
+    border-color: var(--blue-primary);
+}
+
+.checkbox-card input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--blue-primary);
 }
 
 .form-group {
@@ -320,6 +432,11 @@ textarea {
     background-color: var(--bg-dark);
     color: #fff;
     resize: vertical;
+    outline: none;
+}
+
+textarea:focus {
+    border-color: var(--blue-primary);
 }
 
 .btn-whatsapp-calc {
@@ -327,6 +444,19 @@ textarea {
     color: #fff;
     width: 100%;
     justify-content: center;
+}
+
+.btn-whatsapp-calc:hover {
+    background-color: #1eb956;
+}
+
+/* FOOTER */
+.footer {
+    text-align: center;
+    padding: 2rem;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    border-top: 1px solid var(--card-border);
 }
 
 /* WHATSAPP FLOAT */
@@ -345,6 +475,12 @@ textarea {
     font-size: 1.8rem;
     box-shadow: 0 4px 12px rgba(0,0,0,0.4);
     z-index: 999;
+    text-decoration: none;
+    transition: transform 0.2s;
+}
+
+.whatsapp-float:hover {
+    transform: scale(1.1);
 }
 
 /* CHATBOT COM LOGO NO HEADER */
@@ -364,6 +500,11 @@ textarea {
     cursor: pointer;
     z-index: 999;
     box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    transition: background-color 0.2s;
+}
+
+.ai-chat-toggle:hover {
+    background-color: var(--blue-hover);
 }
 
 .ai-chat-box {
@@ -497,6 +638,7 @@ textarea {
     background-color: var(--card-dark);
     color: #fff;
     font-size: 0.85rem;
+    outline: none;
 }
 
 .chat-input-area button {
@@ -509,35 +651,30 @@ textarea {
     cursor: pointer;
 }
 
-/* Typing Indicator */
-.typing-indicator {
-    display: flex;
-    align-items: center;
-    gap: 4px;
-}
-
-.typing-indicator span {
-    height: 6px;
-    width: 6px;
-    background-color: #9E9E9E;
-    display: block;
-    border-radius: 50%;
-    opacity: 0.4;
-    animation: typing 1s infinite;
-}
-
-.typing-indicator span:nth-of-type(1) { animation-delay: 0s; }
-.typing-indicator span:nth-of-type(2) { animation-delay: 0.2s; }
-.typing-indicator span:nth-of-type(3) { animation-delay: 0.4s; }
-
-@keyframes typing {
-    0% { opacity: 0.4; }
-    50% { opacity: 1; }
-    100% { opacity: 0.4; }
-}
-
+/* RESPONSIVIDADE */
 @media (max-width: 900px) {
     .hero-container {
         grid-template-columns: 1fr;
+    }
+
+    .nav-menu {
+        position: fixed;
+        left: -100%;
+        top: 60px;
+        flex-direction: column;
+        background-color: var(--bg-dark);
+        width: 100%;
+        text-align: center;
+        transition: 0.3s;
+        padding: 2rem 0;
+        border-bottom: 1px solid var(--card-border);
+    }
+
+    .nav-menu.active {
+        left: 0;
+    }
+
+    .hamburger {
+        display: flex;
     }
 }
