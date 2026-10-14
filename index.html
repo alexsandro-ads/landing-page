@@ -14,7 +14,7 @@
     <!-- NAVBAR COM LOGO -->
     <header>
         <nav class="navbar">
-            <a href="#" class="logo">
+            <a href="#home" class="logo">
                 <img src="img/logo.png" alt="Alexsandro Damasceno Logo" class="logo-img">
                 <div class="logo-text">
                     <span class="logo-name">Alexsandro</span>
@@ -25,6 +25,7 @@
                 <li><a href="#home" class="nav-link"><i class="fa-solid fa-house"></i> Início</a></li>
                 <li><a href="#planos" class="nav-link"><i class="fa-solid fa-layer-group"></i> Planos de Landing</a></li>
                 <li><a href="#sst" class="nav-link"><i class="fa-solid fa-shield-halved"></i> Gestão de SST</a></li>
+                <li><a href="#videos" class="nav-link"><i class="fa-solid fa-video"></i> Vídeos</a></li>
                 <li><a href="#proposta" class="nav-link"><i class="fa-solid fa-file-signature"></i> Solicitar Proposta</a></li>
                 <li><a href="#contato" class="btn btn-nav-contato"><i class="fa-solid fa-paper-plane"></i> Contato</a></li>
             </ul>
@@ -60,7 +61,7 @@
 
                 <div class="hero-btns">
                     <a href="#planos" class="btn btn-blue"><i class="fa-solid fa-rocket"></i> Ver Planos de Sites</a>
-                    <a href="#proposta" class="btn btn-outline"><i class="fa-solid fa-calculator"></i> Monte Sua Proposta</a>
+                    <a href="#videos" class="btn btn-outline"><i class="fa-solid fa-play"></i> Assistir Apresentação</a>
                 </div>
             </div>
 
@@ -129,7 +130,7 @@
 
             <div class="card-item">
                 <div class="card-image-container">
-                    <img src="img/LTCAT avançada.jpeg" alt="Laudo Técnico das Condições Ambientais do Trabalho - LTCAT">
+                    <img src="img/WhatsApp Image 2026-09-30 at 09.34.42.jpeg" alt="Laudo Técnico das Condições Ambientais do Trabalho - LTCAT">
                 </div>
                 <div class="card-content">
                     <h3>LTCAT - Laudo Técnico de Condições Ambientais</h3>
@@ -140,8 +141,50 @@
         </div>
     </section>
 
+    <!-- NOVA SEÇÃO: VÍDEOS EXPLICATIVOS SOBRE OS SERVIÇOS -->
+    <section id="videos" class="section">
+        <div class="section-header">
+            <h2>Conheça Nossas Soluções em Vídeo</h2>
+            <p class="section-subtitle">Assista às demonstrações práticas de como transformamos a sua operação digital e de segurança do trabalho.</p>
+        </div>
+
+        <div class="video-grid">
+            <!-- Vídeo 1: Desenvolvimento Web & LPs -->
+            <div class="video-card">
+                <div class="video-container">
+                    <!-- Substitua o link do src do iframe pelo link de incorporação do seu vídeo do YouTube -->
+                    <iframe src="https://www.youtube.com/embed/SEU_ID_DO_VIDEO_1" 
+                            title="Apresentação de Landing Pages e Sistemas Web" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen></iframe>
+                </div>
+                <div class="video-info">
+                    <h3><i class="fa-solid fa-code"></i> Desenvolvimento Web & LPs</h3>
+                    <p>Veja como criamos páginas de alta performance orientadas a conversão, integradas com automações e direct chat para o seu WhatsApp.</p>
+                </div>
+            </div>
+
+            <!-- Vídeo 2: Gestão de SST e Dashboards -->
+            <div class="video-card">
+                <div class="video-container">
+                    <!-- Substitua o link do src do iframe pelo link de incorporação do seu vídeo do YouTube -->
+                    <iframe src="https://www.youtube.com/embed/SEU_ID_DO_VIDEO_2" 
+                            title="Gestão de SST e Dashboards em Power BI" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen></iframe>
+                </div>
+                <div class="video-info">
+                    <h3><i class="fa-solid fa-shield-halved"></i> Consultoria SST & Dashboards</h3>
+                    <p>Entenda a importância de manter seu PGR e LTCAT atualizados e como os nossos painéis em Power BI facilitam a gestão de riscos e exames.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- FORMULÁRIO DE PROPOSTA -->
-    <section id="proposta" class="section">
+    <section id="proposta" class="section bg-card-dark">
         <h2>Monte Sua Proposta</h2>
         <form id="proposal-form" class="proposal-container">
             <div class="options-grid">
@@ -202,7 +245,7 @@
             
             <div class="quick-options" id="quick-options">
                 <button type="button" class="quick-opt-btn" data-query="Quero criar um site">💻 Criar um Site</button>
-                <button type="button" class="quick-opt-btn" data-query="Preciso de consultoria SST">🛡️️ Documentos SST</button>
+                <button type="button" class="quick-opt-btn" data-query="Preciso de consultoria SST">🛡 Documentos SST</button>
                 <button type="button" class="quick-opt-btn" data-query="Quero automação Power BI">📊 Power BI & AppSheet</button>
             </div>
         </div>

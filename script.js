@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const PHONE_NUMBER = "5581999999999"; // Substitua pelo seu número do WhatsApp (DDI + DDD + Número)
+    const PHONE_NUMBER = "5581995758108"; // Seu número configurado
 
     // Configuração do Link do Botão Flutuante
     const whatsappFloat = document.getElementById('whatsapp-float');
@@ -122,7 +122,6 @@ document.addEventListener('DOMContentLoaded', () => {
             const query = btn.getAttribute('data-query');
             appendMessage(query, 'user');
             
-            // Oculta as opções rápidas após a escolha
             const quickOpts = document.getElementById('quick-options');
             if (quickOpts) quickOpts.style.display = 'none';
 
