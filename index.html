@@ -1,262 +1,330 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alexsandro Damasceno | ADS & SST</title>
-    <!-- Font Awesome para Ícones -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Folha de Estilos Externa -->
-    <link rel="stylesheet" href="style.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Alexsandro Damasceno | Landing Pages & SST</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Manrope:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0c1824; --panel:#122336; --ink:#eef1f4; --muted:#9fb0c1; --amber:#f2a93b; --line:rgba(238,241,244,.14);
+  --serif:'Newsreader',Georgia,serif; --sans:'Manrope',system-ui,sans-serif;
+  color-scheme:dark; box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1.02rem/1.65 var(--sans);-webkit-font-smoothing:antialiased}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--amber);outline-offset:3px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:rgba(12,24,36,.88);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+header.top .wrap{display:flex;justify-content:space-between;align-items:center;height:68px}
+.brand{font:500 1.3rem var(--serif);text-decoration:none}
+nav{display:flex;gap:28px;font-size:.92rem;color:var(--muted)}
+nav a{text-decoration:none;transition:color .2s}
+nav a:hover{color:var(--ink)}
+.btn{display:inline-block;background:var(--amber);color:#1a1205;padding:15px 30px;border-radius:999px;font-weight:700;text-decoration:none;border:0;font:700 1rem var(--sans);cursor:pointer;transition:transform .2s,box-shadow .2s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(242,169,59,.25)}
+.btn.ghost{background:none;color:var(--ink);border:1px solid var(--line)}
+.btn.ghost:hover{border-color:var(--ink);box-shadow:none}
+
+/* hero */
+.hero{display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:center;padding:88px 0 104px}
+h1{font:400 clamp(2.8rem,6.4vw,5.2rem)/1.02 var(--serif);letter-spacing:-.02em;margin:0 0 26px}
+h1 i{color:var(--amber)}
+.lead{color:var(--muted);max-width:32em;margin:0 0 36px;font-size:1.1rem}
+.cta{display:flex;gap:14px;flex-wrap:wrap}
+.proof{display:flex;gap:28px;margin-top:44px;padding-top:24px;border-top:1px solid var(--line);color:var(--muted);font-size:.9rem;flex-wrap:wrap}
+.proof b{color:var(--ink);font-weight:700}
+
+/* visual: janela + laudo */
+.visual{position:relative;height:420px}
+.win{position:absolute;left:0;top:0;width:88%;background:var(--panel);border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:0 30px 60px rgba(0,0,0,.4);animation:in .9s cubic-bezier(.2,.7,.2,1) both}
+.win .bar{display:flex;gap:6px;padding:12px 14px;border-bottom:1px solid var(--line)}
+.win .bar i{width:9px;height:9px;border-radius:50%;background:var(--line)}
+.win .body{padding:24px}
+.sk{height:10px;border-radius:5px;background:var(--line);margin-bottom:12px}
+.sk.big{height:22px;width:70%;background:#cfd8e1;opacity:.85}
+.sk.btn-sk{width:34%;height:30px;border-radius:15px;background:var(--amber);margin-top:20px}
+.chart{display:flex;align-items:flex-end;gap:10px;height:90px;margin-top:26px}
+.chart span{flex:1;background:linear-gradient(var(--amber),rgba(242,169,59,.25));border-radius:4px 4px 0 0}
+.doc{position:absolute;right:0;bottom:0;width:52%;background:#eef1f4;color:#0c1824;border-radius:10px;padding:20px;transform:rotate(3deg);box-shadow:0 30px 50px rgba(0,0,0,.5);animation:in 1.1s .2s cubic-bezier(.2,.7,.2,1) both}
+.doc h4{margin:0 0 10px;font:500 1.05rem var(--serif)}
+.doc p{margin:0 0 10px;font-size:.78rem;line-height:1.4;color:#44566a}
+.doc .ok{display:inline-block;font-size:.72rem;font-weight:700;background:#d9f0df;color:#1d6b35;padding:3px 10px;border-radius:99px}
+@keyframes in{from{opacity:0;transform:translateY(30px)}}
+
+section{padding:100px 0;border-top:1px solid var(--line)}
+h2{font:400 clamp(2rem,4.2vw,3.1rem)/1.08 var(--serif);letter-spacing:-.01em;margin:0 0 16px}
+.sec-lead{color:var(--muted);max-width:36em;margin:0 0 52px}
+
+/* planos */
+.plans{display:grid;grid-template-columns:1fr 1.15fr;gap:24px;align-items:stretch}
+.plan{border:1px solid var(--line);border-radius:24px;padding:40px;display:flex;flex-direction:column}
+.plan.pro{background:var(--panel);border-color:rgba(242,169,59,.5)}
+.plan h3{font:500 1.9rem var(--serif);margin:0 0 6px}
+.tag{font-size:.82rem;color:var(--amber);font-weight:700;margin-bottom:14px}
+.plan p{color:var(--muted);margin:0 0 22px}
+.plan ul{list-style:none;margin:0 0 32px;padding:0;flex:1}
+.plan li{padding:10px 0;border-top:1px solid var(--line);font-size:.96rem}
+.plan li::before{content:"✓";color:var(--amber);margin-right:12px;font-weight:700}
+
+/* sst em linhas */
+.rows{border-top:1px solid var(--line)}
+.row{display:grid;grid-template-columns:90px 1fr 1.4fr auto;gap:28px;align-items:center;padding:30px 0;border-bottom:1px solid var(--line)}
+.norm{font-weight:700;color:var(--amber);font-size:.95rem}
+.row h3{font:500 1.6rem var(--serif);margin:0}
+.row p{margin:0;color:var(--muted);font-size:.96rem}
+.row a{font-weight:700;text-decoration:none;border-bottom:1px solid var(--amber);padding-bottom:2px;white-space:nowrap}
+
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:56px}
+.duo div{padding-top:24px;border-top:2px solid var(--amber)}
+.duo h3{font:500 1.7rem var(--serif);margin:0 0 10px}
+.duo p{color:var(--muted);margin:0}
+
+/* proposta */
+.quote{background:var(--panel);border:1px solid var(--line);border-radius:28px;padding:56px;display:grid;grid-template-columns:.9fr 1.1fr;gap:56px}
+.opts{display:flex;flex-direction:column;gap:10px;margin-bottom:18px}
+.opts label{display:flex;gap:12px;align-items:center;padding:14px 16px;border:1px solid var(--line);border-radius:12px;cursor:pointer;transition:border-color .2s,background .2s}
+.opts label:has(input:checked){border-color:var(--amber);background:rgba(242,169,59,.08)}
+.opts input{accent-color:var(--amber);width:18px;height:18px}
+textarea{width:100%;min-height:110px;background:var(--bg);color:var(--ink);border:1px solid var(--line);border-radius:12px;padding:14px;font:inherit;resize:vertical;margin-bottom:18px}
+textarea::placeholder{color:#6b7e91}
+footer{padding:40px 0 100px;border-top:1px solid var(--line);color:var(--muted);font-size:.9rem}
+.wa{position:fixed;right:20px;bottom:calc(20px + env(safe-area-inset-bottom,0px));z-index:30;background:#25d366;color:#052e14;width:58px;height:58px;border-radius:50%;display:grid;place-items:center;box-shadow:0 10px 30px rgba(0,0,0,.4);transition:transform .2s}
+.wa:hover{transform:scale(1.08)}
+.wa{background:var(--amber);color:#1a1205;border:0;cursor:pointer;font-size:1.6rem}
+
+/* assistente de atendimento */
+.chat{position:fixed;right:20px;bottom:calc(92px + env(safe-area-inset-bottom,0px));z-index:31;width:min(360px,calc(100vw - 40px));background:var(--panel);border:1px solid var(--line);border-radius:20px;box-shadow:0 30px 60px rgba(0,0,0,.5);display:none;flex-direction:column;overflow:hidden}
+.chat.open{display:flex;animation:in .35s ease both}
+.chat-h{display:flex;justify-content:space-between;align-items:center;padding:14px 16px;background:var(--bg);border-bottom:1px solid var(--line)}
+.chat-h b{font:500 1.15rem var(--serif)}
+.chat-h small{display:block;color:var(--muted);font-size:.78rem}
+.chat-h button{background:none;border:0;color:var(--muted);font-size:1.6rem;line-height:1;cursor:pointer}
+.msgs{padding:16px;max-height:300px;overflow-y:auto;display:flex;flex-direction:column;gap:10px}
+.m{max-width:88%;padding:10px 14px;border-radius:14px;font-size:.93rem;line-height:1.5}
+.m.bot{background:var(--bg);border:1px solid var(--line);border-top-left-radius:4px}
+.m.me{align-self:flex-end;background:var(--amber);color:#1a1205;border-top-right-radius:4px}
+.m a{color:var(--amber);font-weight:700;display:inline-block;margin-top:6px}
+.qr{display:flex;flex-direction:column;gap:8px;padding:0 16px 16px}
+.qr button{text-align:left;background:none;color:var(--ink);border:1px solid var(--line);border-radius:12px;padding:11px 14px;font:500 .93rem var(--sans);cursor:pointer;transition:border-color .2s,background .2s}
+.qr button:hover{border-color:var(--amber);background:rgba(242,169,59,.08)}
+
+@media(max-width:860px){
+  nav{display:none}
+  .hero,.plans,.duo,.quote{grid-template-columns:1fr}
+  .hero{padding:56px 0 72px;gap:40px}
+  .visual{height:360px}
+  .row{grid-template-columns:1fr;gap:8px;padding:26px 0}
+  .quote{padding:32px 22px;gap:32px}
+  .plan{padding:30px 24px}
+  section{padding:72px 0}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
 </head>
 <body>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#home">Alexsandro Damasceno</a>
+    <nav>
+      <a href="#planos">Landing Pages</a>
+      <a href="#sst">Segurança do Trabalho</a>
+      <a href="#dados">Dashboards</a>
+      <a href="#proposta">Proposta</a>
+    </nav>
+    <a class="btn" href="#proposta" style="padding:10px 22px;font-size:.92rem">Orçamento</a>
+  </div>
+</header>
 
-    <!-- NAVBAR COM LOGO -->
-    <header>
-        <nav class="navbar">
-            <a href="#home" class="logo">
-                <img src="img/logo.png" alt="Alexsandro Damasceno Logo" class="logo-img">
-                <div class="logo-text">
-                    <span class="logo-name">Alexsandro</span>
-                    <span class="logo-sub">Damasceno</span>
-                </div>
-            </a>
-            <ul class="nav-menu" id="nav-menu">
-                <li><a href="#home" class="nav-link"><i class="fa-solid fa-house"></i> Início</a></li>
-                <li><a href="#planos" class="nav-link"><i class="fa-solid fa-layer-group"></i> Planos de Landing</a></li>
-                <li><a href="#sst" class="nav-link"><i class="fa-solid fa-shield-halved"></i> Gestão de SST</a></li>
-                <li><a href="#videos" class="nav-link"><i class="fa-solid fa-video"></i> Vídeos</a></li>
-                <li><a href="#proposta" class="nav-link"><i class="fa-solid fa-file-signature"></i> Solicitar Proposta</a></li>
-                <li><a href="#contato" class="btn btn-nav-contato"><i class="fa-solid fa-paper-plane"></i> Contato</a></li>
-            </ul>
-            <div class="hamburger" id="hamburger">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </div>
-        </nav>
-    </header>
-
-    <!-- HERO SECTION -->
-    <section id="home" class="hero">
-        <div class="hero-container">
-            <div class="hero-left">
-                <h1>Gestão de Software e Segurança do Trabalho</h1>
-                <p>Transformo ideias em Landing Pages de alta conversão, dashboards analíticos e sistemas de gestão em SST (PGR, LTCAT, PCMSO) para impulsionar e proteger a sua empresa.</p>
-
-                <div class="hero-metrics">
-                    <div class="metric-item">
-                        <span class="metric-num">100%</span>
-                        <span class="metric-lbl">Responsivo</span>
-                    </div>
-                    <div class="metric-item">
-                        <span class="metric-num">Alta</span>
-                        <span class="metric-lbl">Conversão</span>
-                    </div>
-                    <div class="metric-item">
-                        <span class="metric-num">Rigor</span>
-                        <span class="metric-lbl">Técnico SST</span>
-                    </div>
-                </div>
-
-                <div class="hero-btns">
-                    <a href="#planos" class="btn btn-blue"><i class="fa-solid fa-rocket"></i> Ver Planos de Sites</a>
-                    <a href="#videos" class="btn btn-outline"><i class="fa-solid fa-play"></i> Assistir Apresentação</a>
-                </div>
-            </div>
-
-            <div class="hero-right">
-                <div class="profile-card">
-                    <div class="profile-card-header">
-                        <img src="img/logo.png" alt="Alexsandro Damasceno" class="card-avatar">
-                        <div>
-                            <h3>Alexsandro Damasceno</h3>
-                            <p>Análise de Sistemas & SST</p>
-                        </div>
-                    </div>
-                    <ul class="profile-features">
-                        <li><i class="fa-solid fa-check"></i> Desenvolvimento de Landing Pages Modernas</li>
-                        <li><i class="fa-solid fa-check"></i> Criação de Dashboards (Power BI / Excel)</li>
-                        <li><i class="fa-solid fa-check"></i> Sistemas Customizados (AppSheet)</li>
-                        <li><i class="fa-solid fa-check"></i> Laudos e Gestão de SST (NR-01, NR-12)</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SEÇÃO: PLANOS DE LANDING PAGE -->
-    <section id="planos" class="section">
-        <h2>Planos de Landing Page</h2>
-        <div class="cards-grid">
-            <div class="card-item">
-                <div class="card-image-container">
-                    <img src="img/landing-page-basica.jpg" alt="Landing Page Básica">
-                </div>
-                <div class="card-content">
-                    <h3>Landing Page - Básica</h3>
-                    <p>Ideal para profissionais liberais, autônomos ou pequenos negócios que buscam marcar presença digital com velocidade, elegância e foco total em conversão via WhatsApp.</p>
-                    <a href="#proposta" class="btn btn-blue btn-full"><i class="fa-solid fa-cart-shopping"></i> Solicitar Plano Básico</a>
-                </div>
-            </div>
-
-            <div class="card-item highlight">
-                <div class="card-image-container">
-                    <img src="img/landing-page-avançada.jpg" alt="Landing Page Avançada">
-                </div>
-                <div class="card-content">
-                    <h3>Landing Page - Avançada</h3>
-                    <p>Estrutura completa com animações, formulários interativos, integração com APIs/CRM, seção de depoimentos e otimização para carregamento super rápido e SEO.</p>
-                    <a href="#proposta" class="btn btn-blue btn-full"><i class="fa-solid fa-rocket"></i> Solicitar Plano Avançado</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SEÇÃO: GESTÃO E LAUDOS DE SST -->
-    <section id="sst" class="section bg-card-dark">
-        <h2>Gestão e Laudos de SST</h2>
-        <div class="cards-grid">
-            <div class="card-item">
-                <div class="card-image-container">
-                    <img src="img/PGR avançada.jpeg" alt="Programa de Gerenciamento de Riscos - PGR">
-                </div>
-                <div class="card-content">
-                    <h3>PGR - Programa de Gerenciamento de Riscos</h3>
-                    <p>Identificação, avaliação e controle de riscos ocupacionais para manter sua empresa 100% em conformidade legal com a NR-01 e normas vigentes.</p>
-                    <a href="#proposta" class="btn btn-outline btn-full"><i class="fa-solid fa-shield-halved"></i> Contratar PGR</a>
-                </div>
-            </div>
-
-            <div class="card-item">
-                <div class="card-image-container">
-                    <img src="img/WhatsApp Image 2026-09-30 at 09.34.42.jpeg" alt="Laudo Técnico das Condições Ambientais do Trabalho - LTCAT">
-                </div>
-                <div class="card-content">
-                    <h3>LTCAT - Laudo Técnico de Condições Ambientais</h3>
-                    <p>Avaliação técnica precisa de agentes nocivos (físicos, químicos e biológicos), medições de ambiente e suporte para eSocial e obrigações previdenciárias.</p>
-                    <a href="#proposta" class="btn btn-outline btn-full"><i class="fa-solid fa-file-contract"></i> Contratar LTCAT</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- NOVA SEÇÃO: VÍDEOS EXPLICATIVOS SOBRE OS SERVIÇOS -->
-    <section id="videos" class="section">
-        <div class="section-header">
-            <h2>Conheça Nossas Soluções em Vídeo</h2>
-            <p class="section-subtitle">Assista às demonstrações práticas de como transformamos a sua operação digital e de segurança do trabalho.</p>
-        </div>
-
-        <div class="video-grid">
-            <!-- Vídeo 1: Desenvolvimento Web & LPs -->
-            <div class="video-card">
-                <div class="video-container">
-                    <!-- Substitua o link do src do iframe pelo link de incorporação do seu vídeo do YouTube -->
-                    <iframe src="https://www.youtube.com/embed/SEU_ID_DO_VIDEO_1" 
-                            title="Apresentação de Landing Pages e Sistemas Web" 
-                            frameborder="0" 
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                            allowfullscreen></iframe>
-                </div>
-                <div class="video-info">
-                    <h3><i class="fa-solid fa-code"></i> Desenvolvimento Web & LPs</h3>
-                    <p>Veja como criamos páginas de alta performance orientadas a conversão, integradas com automações e direct chat para o seu WhatsApp.</p>
-                </div>
-            </div>
-
-            <!-- Vídeo 2: Gestão de SST e Dashboards -->
-            <div class="video-card">
-                <div class="video-container">
-                    <!-- Substitua o link do src do iframe pelo link de incorporação do seu vídeo do YouTube -->
-                    <iframe src="https://www.youtube.com/embed/SEU_ID_DO_VIDEO_2" 
-                            title="Gestão de SST e Dashboards em Power BI" 
-                            frameborder="0" 
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                            allowfullscreen></iframe>
-                </div>
-                <div class="video-info">
-                    <h3><i class="fa-solid fa-shield-halved"></i> Consultoria SST & Dashboards</h3>
-                    <p>Entenda a importância de manter seu PGR e LTCAT atualizados e como os nossos painéis em Power BI facilitam a gestão de riscos e exames.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- FORMULÁRIO DE PROPOSTA -->
-    <section id="proposta" class="section bg-card-dark">
-        <h2>Monte Sua Proposta</h2>
-        <form id="proposal-form" class="proposal-container">
-            <div class="options-grid">
-                <label class="checkbox-card">
-                    <input type="checkbox" value="Landing Page / Site Institucional">
-                    <span>Landing Page / Site</span>
-                </label>
-                <label class="checkbox-card">
-                    <input type="checkbox" value="Gestão / Documentação de SST (PGR, LTCAT)">
-                    <span>Documentação SST</span>
-                </label>
-                <label class="checkbox-card">
-                    <input type="checkbox" value="Dashboard Power BI / Aplicativo AppSheet">
-                    <span>Power BI / AppSheet</span>
-                </label>
-            </div>
-
-            <div class="form-group">
-                <label for="proposal-detalhes">Detalhes adicionais do projeto:</label>
-                <textarea id="proposal-detalhes" rows="4" placeholder="Descreva brevemente o que precisa..."></textarea>
-            </div>
-
-            <button type="button" id="btn-send-proposal" class="btn btn-whatsapp-calc">
-                <i class="fa-brands fa-whatsapp"></i> Enviar Proposta via WhatsApp
-            </button>
-        </form>
-    </section>
-
-    <!-- FOOTER / CONTATO -->
-    <footer id="contato" class="footer">
-        <p>&copy; 2026 Alexsandro Damasceno - Análise de Sistemas & SST. Todos os direitos reservados.</p>
-    </footer>
-
-    <!-- BOTÃO FLUTUANTE WHATSAPP -->
-    <a href="#" id="whatsapp-float" class="whatsapp-float" target="_blank" aria-label="WhatsApp">
-        <i class="fa-brands fa-whatsapp"></i>
-    </a>
-
-    <!-- CHATBOT FLUTUANTE COM LOGO -->
-    <div class="ai-chat-toggle" id="ai-chat-toggle">
-        <i class="fa-solid fa-comments"></i>
-        <span>Assistente</span>
+<main id="home">
+<div class="wrap hero">
+  <div>
+    <h1>Seu negócio visto, <i>seguro</i> e em conformidade.</h1>
+    <p class="lead">Crio landing pages que transformam visitas em conversas no WhatsApp e cuido da documentação de SST (PGR, LTCAT, PCMSO) para sua empresa operar dentro da lei.</p>
+    <div class="cta">
+      <a class="btn" href="#planos">Ver planos de site</a>
+      <a class="btn ghost" href="#sst">Ver serviços de SST</a>
     </div>
-
-    <div class="ai-chat-box" id="ai-chat-box">
-        <div class="chat-header">
-            <div class="chat-header-info">
-                <img src="img/logo.png" alt="Logo Assistente" class="chat-logo-img">
-                <span>Atendimento Rápido</span>
-            </div>
-            <button id="chat-close-btn">&times;</button>
-        </div>
-        
-        <div class="chat-messages" id="chat-messages">
-            <div class="chat-msg msg-ai">
-                Olá! Sou o assistente virtual do Alexsandro. Como posso te ajudar hoje? 😊
-            </div>
-            
-            <div class="quick-options" id="quick-options">
-                <button type="button" class="quick-opt-btn" data-query="Quero criar um site">💻 Criar um Site</button>
-                <button type="button" class="quick-opt-btn" data-query="Preciso de consultoria SST">🛡 Documentos SST</button>
-                <button type="button" class="quick-opt-btn" data-query="Quero automação Power BI">📊 Power BI & AppSheet</button>
-            </div>
-        </div>
-
-        <div class="chat-input-area">
-            <input type="text" id="chat-user-input" placeholder="Digite sua mensagem...">
-            <button id="chat-send-btn"><i class="fa-solid fa-paper-plane"></i></button>
-        </div>
+    <div class="proof">
+      <span><b>100%</b> responsivo</span>
+      <span><b>Foco</b> em conversão</span>
+      <span><b>Rigor</b> técnico NR-01 e NR-12</span>
     </div>
+  </div>
+  <div class="visual" aria-hidden="true">
+    <div class="win">
+      <div class="bar"><i></i><i></i><i></i></div>
+      <div class="body">
+        <div class="sk big"></div><div class="sk" style="width:90%"></div><div class="sk" style="width:60%"></div>
+        <div class="sk btn-sk"></div>
+        <div class="chart"><span style="height:35%"></span><span style="height:55%"></span><span style="height:45%"></span><span style="height:75%"></span><span style="height:100%"></span></div>
+      </div>
+    </div>
+    <div class="doc">
+      <h4>PGR · NR-01</h4>
+      <p>Inventário de riscos ocupacionais e plano de ação da empresa.</p>
+      <span class="ok">Em conformidade</span>
+    </div>
+  </div>
+</div>
 
-    <!-- Script JavaScript Externo -->
-    <script src="script.js"></script>
+<section id="planos">
+  <div class="wrap">
+    <h2>Landing pages para cada momento do negócio</h2>
+    <p class="sec-lead">Do primeiro site de quem está começando até uma página completa, integrada e otimizada para aparecer no Google.</p>
+    <div class="plans">
+      <div class="plan">
+        <h3>Básica</h3>
+        <div class="tag">Para autônomos e pequenos negócios</div>
+        <p>Presença digital rápida, elegante e focada em levar o cliente direto ao seu WhatsApp.</p>
+        <ul>
+          <li>Design moderno e responsivo</li>
+          <li>Botão direto para WhatsApp</li>
+          <li>Carregamento rápido</li>
+        </ul>
+        <a class="btn ghost" href="#proposta" data-plan="Landing Page Básica">Solicitar plano básico</a>
+      </div>
+      <div class="plan pro">
+        <h3>Avançada</h3>
+        <div class="tag">Mais indicado para quem quer escalar</div>
+        <p>Estrutura completa para vender mais, com recursos que a página básica não tem.</p>
+        <ul>
+          <li>Animações e formulários interativos</li>
+          <li>Integração com APIs e CRM</li>
+          <li>Seção de depoimentos</li>
+          <li>SEO e carregamento super rápido</li>
+        </ul>
+        <a class="btn" href="#proposta" data-plan="Landing Page Avançada">Solicitar plano avançado</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="sst">
+  <div class="wrap">
+    <h2>Gestão e laudos de SST</h2>
+    <p class="sec-lead">Documentos técnicos que protegem seus colaboradores e evitam multas e problemas com o eSocial.</p>
+    <div class="rows">
+      <div class="row">
+        <span class="norm">NR-01</span>
+        <h3>PGR</h3>
+        <p>Identificação, avaliação e controle dos riscos ocupacionais da sua empresa.</p>
+        <a href="#proposta" data-plan="PGR">Contratar</a>
+      </div>
+      <div class="row">
+        <span class="norm">Previdência</span>
+        <h3>LTCAT</h3>
+        <p>Avaliação de agentes nocivos físicos, químicos e biológicos, com suporte ao eSocial.</p>
+        <a href="#proposta" data-plan="LTCAT">Contratar</a>
+      </div>
+      <div class="row">
+        <span class="norm">NR-07</span>
+        <h3>PCMSO</h3>
+        <p>Programa de saúde ocupacional ligado ao controle de exames dos colaboradores.</p>
+        <a href="#proposta" data-plan="PCMSO">Contratar</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="dados">
+  <div class="wrap">
+    <h2>Dados e sistemas sob medida</h2>
+    <p class="sec-lead">Para quem quer acompanhar a operação sem planilhas confusas.</p>
+    <div class="duo">
+      <div><h3>Dashboards em Power BI e Excel</h3><p>Painéis claros para acompanhar riscos, exames, vendas e indicadores da empresa.</p></div>
+      <div><h3>Sistemas no AppSheet</h3><p>Aplicativos customizados para registrar inspeções, controles e rotinas direto do celular.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="proposta">
+  <div class="wrap">
+    <div class="quote">
+      <div>
+        <h2>Monte sua proposta</h2>
+        <p class="sec-lead" style="margin:0">Escolha o que você precisa, conte um pouco sobre o projeto e o pedido chega pronto no meu WhatsApp.</p>
+      </div>
+      <div>
+        <div class="opts">
+          <label><input type="checkbox" value="Landing Page / Site"> Landing page ou site</label>
+          <label><input type="checkbox" value="Documentação SST"> Documentação de SST</label>
+          <label><input type="checkbox" value="Power BI / AppSheet"> Power BI ou AppSheet</label>
+        </div>
+        <textarea id="det" placeholder="Detalhes do projeto (ramo da empresa, prazo, dúvidas...)"></textarea>
+        <button class="btn" id="send" type="button">Enviar proposta pelo WhatsApp</button>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer><div class="wrap">© 2026 Alexsandro Damasceno · Análise de Sistemas & SST. Todos os direitos reservados.</div></footer>
+
+<div class="chat" id="chat" role="dialog" aria-label="Assistente de atendimento">
+  <div class="chat-h">
+    <div><b>Assistente</b><small>Atendimento rápido</small></div>
+    <button type="button" id="chatX" aria-label="Fechar">×</button>
+  </div>
+  <div class="msgs" id="msgs" aria-live="polite"></div>
+  <div class="qr" id="qr">
+    <button type="button" data-k="site">💻 Criar um site</button>
+    <button type="button" data-k="sst">🛡️ Documentos SST</button>
+    <button type="button" data-k="bi">📊 Power BI e AppSheet</button>
+  </div>
+</div>
+<button class="wa" id="chatBtn" type="button" aria-label="Abrir atendimento" aria-expanded="false">💬</button>
+
+<script>
+// Troque pelo seu número, com 55 + DDD (somente dígitos)
+var NUMERO = "5581995758108";
+function link(msg){ return "https://wa.me/" + NUMERO + "?text=" + encodeURIComponent(msg); }
+
+var chat = document.getElementById("chat"), msgs = document.getElementById("msgs"), btn = document.getElementById("chatBtn"), started = false;
+function add(txt, who, ctas){
+  var d = document.createElement("div"); d.className = "m " + who; d.textContent = txt;
+  (ctas || []).forEach(function(c){ d.appendChild(document.createElement("br")); var a = document.createElement("a"); a.textContent = c[0]; a.href = c[1]; if(c[1].indexOf("http")===0){a.target="_blank"; a.rel="noopener";} else {a.addEventListener("click", toggle);} d.appendChild(a); });
+  msgs.appendChild(d); msgs.scrollTop = msgs.scrollHeight;
+}
+function toggle(force){
+  var open = typeof force === "boolean" ? force : !chat.classList.contains("open");
+  chat.classList.toggle("open", open); btn.setAttribute("aria-expanded", open);
+  if(open && !started){ started = true; add("Olá! Sou o assistente virtual do Alexsandro. Como posso te ajudar hoje? 😊", "bot"); }
+}
+var R = {
+  site: ["Criar um site", "Faço landing pages Básica (foco em levar o cliente ao WhatsApp) e Avançada (animações, formulários, CRM e SEO). Quer ver os planos ou já pedir um orçamento?", "Quero um orçamento de landing page."],
+  sst: ["Documentos SST", "Elaboro PGR (NR-01), LTCAT e PCMSO, além de laudos como os da NR-12. Me conte o porte da sua empresa que eu te ajudo a escolher.", "Preciso de documentos de SST para minha empresa."],
+  bi: ["Power BI e AppSheet", "Crio dashboards em Power BI e Excel e sistemas sob medida no AppSheet. Qual processo você gostaria de acompanhar ou automatizar?", "Quero um dashboard ou sistema personalizado."]
+};
+document.querySelectorAll("#qr button").forEach(function(b){
+  b.addEventListener("click", function(){
+    var r = R[b.dataset.k]; add(r[0], "me");
+    setTimeout(function(){ add(r[1], "bot", [["Falar no WhatsApp", link("Olá, Alexsandro! " + r[2])], ["Montar proposta", "#proposta"]]); }, 450);
+  });
+});
+btn.addEventListener("click", function(){ toggle(); });
+document.getElementById("chatX").addEventListener("click", function(){ toggle(false); });
+document.addEventListener("keydown", function(e){ if(e.key === "Escape") toggle(false); });
+
+document.querySelectorAll("[data-plan]").forEach(function(a){
+  a.addEventListener("click", function(){
+    var v = a.getAttribute("data-plan");
+    var map = {"Landing Page Básica":"Landing Page / Site","Landing Page Avançada":"Landing Page / Site","PGR":"Documentação SST","LTCAT":"Documentação SST","PCMSO":"Documentação SST"};
+    document.querySelectorAll(".opts input").forEach(function(i){ if(i.value===map[v]) i.checked = true; });
+    var t = document.getElementById("det");
+    if(!t.value) t.value = "Tenho interesse em: " + v + ".";
+  });
+});
+document.getElementById("send").addEventListener("click", function(){
+  var itens = Array.prototype.map.call(document.querySelectorAll(".opts input:checked"), function(i){return i.value;});
+  var msg = "Olá, Alexsandro! Gostaria de uma proposta.\nServiços: " + (itens.join(", ") || "a definir") + "\nDetalhes: " + (document.getElementById("det").value || "sem detalhes");
+  window.open(link(msg), "_blank");
+});
+</script>
 </body>
 </html>
